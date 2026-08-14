@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Our Services — EcoSteam Clean</title>
+<meta name="description" content="Explore EcoSteam Clean's full range: carpet cleaning, upholstery, stain removal, end of tenancy, rug, deep and commercial cleaning. Eco-friendly & fully insured.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><rect width='48' height='48' rx='13' fill='%2316a36b'/><path d='M24 11c-1.2 3.4-6.5 7.8-6.5 12.5a6.5 6.5 0 0 0 13 0C30.5 18.8 25.2 14.4 24 11z' fill='white'/></svg>">
+</head>
+<body data-page="services" data-root="">
+<div id="site-header-mount"></div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <div class="crumbs"><a href="index.html">Home</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span>Services</span></div>
+    <h1>Our cleaning services</h1>
+    <p class="lead mt-2">Whatever needs a refresh, we bring professional steam power and a genuinely eco-friendly approach. Explore our services below.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cards" id="allServices"></div>
+  </div>
+</section>
+
+<section class="section bg-soft">
+  <div class="wrap">
+    <div class="split">
+      <div data-reveal>
+        <span class="eyebrow">Why choose us</span>
+        <h2 class="h-lg mt-2">One trusted team for every clean</h2>
+        <p class="lead mt-2">No juggling multiple companies. From a single sofa to a full commercial contract, you get the same insured, DBS-checked professionals and the same green promise every time.</p>
+        <div class="feature-list">
+          <div class="feature"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/></svg></span><div><h4>Eco-friendly by default</h4><p>Non-toxic, biodegradable solutions on every job — no upsells, no compromise.</p></div></div>
+          <div class="feature"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></span><div><h4>Satisfaction guarantee</h4><p>Not happy with an area? Tell us and we'll make it right.</p></div></div>
+          <div class="feature"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><h4>Flexible scheduling</h4><p>Evenings, weekends and out-of-hours slots to fit around your life or business.</p></div></div>
+        </div>
+        <a class="btn btn-primary btn-lg mt-4" href="contact.html">Get a Free Quote</a>
+      </div>
+      <div class="media-frame" data-reveal>
+        <img class="photo" src="assets/photos/services.jpg" alt="Professional steam cleaning a sofa and living room">
+        <div class="media-badge"><span class="mb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><div><strong>Fully insured</strong><small>& DBS-checked team</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm">
+  <div class="wrap">
+    <div class="cta-band" data-reveal>
+      <div class="cta-flex">
+        <div><h2 class="h-lg">Not sure which service you need?</h2><p class="lead mt-2" style="color:#d6f0e4">Tell us the problem and we'll recommend the right solution — free of charge.</p></div>
+        <a class="btn btn-white btn-lg" href="contact.html">Ask an Expert</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer-mount"></div>
+<script src="js/site.js"></script>
+<script>
+  (function () {
+    document.getElementById("allServices").innerHTML = window.ESC.SERVICES.map(s => `
+      <a class="svc-card" data-reveal href="services/${s.slug}.html">
+        ${s.tag ? `<span class="pill" style="position:absolute;top:1.2rem;right:1.2rem">${s.tag}</span>` : ""}
+        <div class="svc-ic">${window.ESC.ICON[s.icon]}</div>
+        <h3>${s.name}</h3>
+        <p>${s.blurb}</p>
+        <span class="svc-link">Learn more ${window.ESC.ICON.arrow}</span>
+      </a>`).join("");
+    window.__reveal && window.__reveal();
+  })();
+</script>
+</body>
+</html>

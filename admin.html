@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin — EcoSteam Clean</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><rect width='48' height='48' rx='13' fill='%2316a36b'/><path d='M24 11c-1.2 3.4-6.5 7.8-6.5 12.5a6.5 6.5 0 0 0 13 0C30.5 18.8 25.2 14.4 24 11z' fill='white'/></svg>">
+<style>
+  body { background: var(--paper-3); }
+  .admin-top { background: var(--green-900); color: #fff; padding: 1rem 0; position: sticky; top: 0; z-index: 40; }
+  .admin-top .wrap { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+  .admin-top .brand span { color: #fff; }
+  .login-wrap { min-height: 80vh; display: grid; place-items: center; padding: 2rem; }
+  .login-card { background: #fff; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); padding: 2.5rem; width: min(420px, 92vw); text-align: center; }
+  .pin-in { letter-spacing: .5em; text-align: center; font-size: 1.5rem !important; font-weight: 700; }
+  .tabs { display: flex; gap: .5rem; margin-bottom: 1.6rem; flex-wrap: wrap; }
+  .tab { padding: .7rem 1.2rem; border-radius: 999px; font-family: var(--font-head); font-weight: 700; background: #fff; border: 1px solid var(--line); color: var(--ink-500); cursor: pointer; }
+  .tab.active { background: var(--grad-brand); color: #fff; border-color: transparent; }
+  .panel { display: none; } .panel.active { display: block; }
+  .adm-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 1.6rem; align-items: start; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 1.6rem; box-shadow: var(--shadow-sm); }
+  .row-item { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem; border: 1px solid var(--line); border-radius: 14px; margin-bottom: .8rem; align-items: flex-start; }
+  .row-item h4 { font-size: 1.02rem; margin-bottom: .2rem; }
+  .row-item .meta { font-size: .82rem; color: var(--ink-400); }
+  .mini { padding: .5rem .85rem; font-size: .85rem; border-radius: 10px; font-family: var(--font-head); font-weight: 700; cursor: pointer; }
+  .mini.edit { background: var(--green-50); color: var(--green-700); }
+  .mini.del { background: #fdecec; color: #c0392b; }
+  .mini.gh { background: var(--paper-2); color: var(--ink-500); border: 1px solid var(--line); }
+  .badge { display: inline-block; padding: .2rem .6rem; border-radius: 999px; font-size: .72rem; font-weight: 800; font-family: var(--font-head); }
+  .badge.new { background: var(--green-100); color: var(--green-700); }
+  .badge.contacted { background: #fff3d6; color: #a16207; }
+  .badge.done { background: #e5e7eb; color: #4b5563; }
+  .empty { text-align: center; color: var(--ink-400); padding: 2.5rem 1rem; }
+  .stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-bottom: 1.6rem; }
+  .stat-box { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.2rem; text-align: center; }
+  .stat-box .n { font-family: var(--font-head); font-weight: 800; font-size: 1.9rem; color: var(--green-600); }
+  .stat-box .l { font-size: .82rem; color: var(--ink-500); }
+  @media (max-width: 860px) { .adm-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginView">
+  <div class="login-wrap">
+    <div class="login-card">
+      <svg width="56" height="56" viewBox="0 0 48 48" style="margin:0 auto 1rem"><rect width="48" height="48" rx="13" fill="#16a36b"/><path d="M24 11c-1.2 3.4-6.5 7.8-6.5 12.5a6.5 6.5 0 0 0 13 0C30.5 18.8 25.2 14.4 24 11z" fill="#fff"/></svg>
+      <h1 class="h-md">EcoSteam Admin</h1>
+      <p class="muted" style="margin:.4rem 0 1.4rem">Enter your PIN to manage the site.</p>
+      <div class="field"><input class="pin-in" id="pinInput" type="password" inputmode="numeric" maxlength="8" placeholder="••••"></div>
+      <p id="pinErr" style="color:#c0392b;font-size:.9rem;display:none;margin-bottom:.8rem">Incorrect PIN. Try again.</p>
+      <button class="btn btn-primary btn-lg" style="width:100%" id="pinBtn">Unlock</button>
+      <p style="margin-top:1.2rem"><a class="muted" href="index.html" style="font-size:.88rem">← Back to website</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashView" style="display:none">
+  <div class="admin-top">
+    <div class="wrap">
+      <a class="brand" href="index.html"><svg class="logo-mark" viewBox="0 0 48 48"><rect width="48" height="48" rx="13" fill="url(#g2)"/><path d="M24 11c-1.2 3.4-6.5 7.8-6.5 12.5a6.5 6.5 0 0 0 13 0C30.5 18.8 25.2 14.4 24 11z" fill="#fff"/><defs><linearGradient id="g2" x1="0" y1="0" x2="48" y2="48"><stop stop-color="#16a36b"/><stop offset="1" stop-color="#16b6c4"/></linearGradient></defs></svg><span>EcoSteam <small style="color:var(--green-300)">Admin</small></span></a>
+      <div style="display:flex;gap:.7rem">
+        <a class="btn btn-outline" href="index.html" style="border-color:rgba(255,255,255,.3)">View site</a>
+        <button class="btn btn-white" id="logoutBtn">Log out</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap" style="padding:2rem 0 4rem">
+    <div class="tabs">
+      <button class="tab active" data-tab="posts">📝 Blog posts</button>
+      <button class="tab" data-tab="leads">📥 Quote requests</button>
+    </div>
+
+    <!-- POSTS PANEL -->
+    <div class="panel active" id="panel-posts">
+      <div class="adm-grid">
+        <div class="card">
+          <h3 class="h-md" style="margin-bottom:1rem">Published posts</h3>
+          <div id="postList"></div>
+        </div>
+        <div class="card">
+          <h3 class="h-md" id="editorTitle" style="margin-bottom:1rem">New post</h3>
+          <form id="postForm">
+            <input type="hidden" id="p_original_slug">
+            <div class="field"><label>Title *</label><input id="p_title" required placeholder="How to remove coffee stains"></div>
+            <div class="field-row">
+              <div class="field"><label>Category</label><select id="p_category"></select></div>
+              <div class="field"><label>Read time (min)</label><input id="p_read" type="number" min="1" value="5"></div>
+            </div>
+            <div class="field-row">
+              <div class="field"><label>Author</label><input id="p_author" value="The EcoSteam Team"></div>
+              <div class="field"><label>Date</label><input id="p_date" type="date"></div>
+            </div>
+            <div class="field"><label>Excerpt (short summary) *</label><textarea id="p_excerpt" required style="min-height:70px" placeholder="One or two sentences that appear on the blog card."></textarea></div>
+            <div class="field"><label>Body *</label><textarea id="p_body" required style="min-height:220px" placeholder="Write your article. Separate paragraphs with a blank line. Basic HTML (h2, ul, blockquote) is also supported."></textarea>
+              <p class="form-note">Tip: leave a blank line between paragraphs. You can also paste HTML.</p>
+            </div>
+            <div style="display:flex;gap:.7rem;flex-wrap:wrap">
+              <button type="submit" class="btn btn-primary">Save post</button>
+              <button type="button" class="btn btn-ghost" id="resetForm">Clear</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- LEADS PANEL -->
+    <div class="panel" id="panel-leads">
+      <div class="stat-row" id="leadStats"></div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;flex-wrap:wrap;gap:.6rem">
+          <h3 class="h-md">Incoming quote requests</h3>
+          <button class="mini gh" id="exportLeads">Export CSV</button>
+        </div>
+        <div id="leadList"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/site.js"></script>
+<script src="js/blog.js"></script>
+<script src="js/admin.js"></script>
+<script>
+const A = window.ESC_ADMIN;
+
+/* ---- Auth flow ---- */
+function showDash() {
+  document.getElementById("loginView").style.display = "none";
+  document.getElementById("dashView").style.display = "block";
+  renderPosts(); renderLeads(); initEditor();
+}
+if (A.isAuthed()) showDash();
+
+document.getElementById("pinBtn").addEventListener("click", tryLogin);
+document.getElementById("pinInput").addEventListener("keydown", e => { if (e.key === "Enter") tryLogin(); });
+function tryLogin() {
+  const pin = document.getElementById("pinInput").value.trim();
+  if (A.login(pin)) showDash();
+  else { document.getElementById("pinErr").style.display = "block"; document.getElementById("pinInput").value = ""; }
+}
+document.getElementById("logoutBtn").addEventListener("click", A.logout);
+
+/* ---- Tabs ---- */
+document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => {
+  document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
+  document.querySelectorAll(".panel").forEach(x => x.classList.remove("active"));
+  t.classList.add("active");
+  document.getElementById("panel-" + t.dataset.tab).classList.add("active");
+}));
+
+/* ---- Editor ---- */
+function initEditor() {
+  const sel = document.getElementById("p_category");
+  sel.innerHTML = A.categories.map(c => `<option>${c}</option>`).join("");
+  if (!document.getElementById("p_date").value)
+    document.getElementById("p_date").value = new Date().toISOString().slice(0, 10);
+
+  document.getElementById("postForm").addEventListener("submit", e => {
+    e.preventDefault();
+    const title = document.getElementById("p_title").value.trim();
+    const origSlug = document.getElementById("p_original_slug").value;
+    const slug = origSlug || A.slugify(title);
+    const post = {
+      slug,
+      title,
+      category: document.getElementById("p_category").value,
+      author: document.getElementById("p_author").value.trim() || "The EcoSteam Team",
+      date: document.getElementById("p_date").value || new Date().toISOString().slice(0, 10),
+      read: parseInt(document.getElementById("p_read").value) || 5,
+      excerpt: document.getElementById("p_excerpt").value.trim(),
+      body: A.textToHtml(document.getElementById("p_body").value.trim()),
+    };
+    A.upsertPost(post);
+    resetEditor();
+    renderPosts();
+    alert("✓ Post saved. It's now live on the blog.");
+  });
+  document.getElementById("resetForm").addEventListener("click", resetEditor);
+}
+function resetEditor() {
+  document.getElementById("postForm").reset();
+  document.getElementById("p_original_slug").value = "";
+  document.getElementById("p_date").value = new Date().toISOString().slice(0, 10);
+  document.getElementById("p_author").value = "The EcoSteam Team";
+  document.getElementById("editorTitle").textContent = "New post";
+}
+function editPost(slug) {
+  const p = window.ESC_BLOG.getPostBySlug(slug);
+  if (!p) return;
+  document.getElementById("editorTitle").textContent = "Edit post";
+  document.getElementById("p_original_slug").value = p.slug;
+  document.getElementById("p_title").value = p.title;
+  document.getElementById("p_category").value = p.category;
+  document.getElementById("p_read").value = p.read || 5;
+  document.getElementById("p_author").value = p.author || "The EcoSteam Team";
+  document.getElementById("p_date").value = p.date;
+  document.getElementById("p_excerpt").value = p.excerpt;
+  document.getElementById("p_body").value = p.body;
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+window.editPost = editPost;
+
+function renderPosts() {
+  const admin = A.loadPosts();
+  const seeds = window.ESC_BLOG.SEED_POSTS.filter(sp => !admin.some(ap => ap.slug === sp.slug));
+  const list = document.getElementById("postList");
+  const all = window.ESC_BLOG.getAllPosts();
+  if (!all.length) { list.innerHTML = `<div class="empty">No posts yet.</div>`; return; }
+  list.innerHTML = all.map(p => {
+    const isAdmin = admin.some(ap => ap.slug === p.slug);
+    return `<div class="row-item">
+      <div>
+        <h4>${p.title}</h4>
+        <div class="meta">${p.category} · ${A.fmtDate(p.date)} · ${isAdmin ? '<span class="badge new">custom</span>' : '<span class="badge done">built-in</span>'}</div>
+      </div>
+      <div style="display:flex;gap:.4rem;flex-wrap:wrap">
+        <a class="mini gh" href="post.html?id=${encodeURIComponent(p.slug)}" target="_blank">View</a>
+        <button class="mini edit" onclick="editPost('${p.slug}')">Edit</button>
+        ${isAdmin ? `<button class="mini del" onclick="removePost('${p.slug}')">Delete</button>` : ''}
+      </div>
+    </div>`;
+  }).join("");
+}
+function removePost(slug) {
+  if (!confirm("Delete this post? This cannot be undone.")) return;
+  A.deletePost(slug); renderPosts();
+}
+window.removePost = removePost;
+
+/* ---- Leads ---- */
+function renderLeads() {
+  const leads = A.loadLeads();
+  const stats = document.getElementById("leadStats");
+  const nNew = leads.filter(l => l.status === "new").length;
+  const nContacted = leads.filter(l => l.status === "contacted").length;
+  stats.innerHTML = `
+    <div class="stat-box"><div class="n">${leads.length}</div><div class="l">Total requests</div></div>
+    <div class="stat-box"><div class="n">${nNew}</div><div class="l">New</div></div>
+    <div class="stat-box"><div class="n">${nContacted}</div><div class="l">Contacted</div></div>`;
+
+  const list = document.getElementById("leadList");
+  if (!leads.length) { list.innerHTML = `<div class="empty">No quote requests yet. Submissions from the contact form appear here.</div>`; return; }
+  list.innerHTML = leads.map(l => `
+    <div class="row-item">
+      <div>
+        <h4>${l.name || "—"} <span class="badge ${l.status || 'new'}">${l.status || 'new'}</span></h4>
+        <div class="meta">${A.fmtDateTime(l.date)} · ${l.service || 'General'}</div>
+        <div style="margin-top:.5rem;font-size:.9rem">
+          📞 <a href="tel:${l.phone}">${l.phone || '—'}</a> &nbsp; ✉️ <a href="mailto:${l.email}">${l.email || '—'}</a>${l.postcode ? ' &nbsp; 📍 ' + l.postcode : ''}
+        </div>
+        ${l.message ? `<div style="margin-top:.5rem;font-size:.92rem;color:var(--ink-500)">${l.message}</div>` : ''}
+      </div>
+      <div style="display:flex;flex-direction:column;gap:.4rem">
+        <button class="mini edit" onclick="markLead('${l.id}','contacted')">Mark contacted</button>
+        <button class="mini gh" onclick="markLead('${l.id}','done')">Mark done</button>
+        <button class="mini del" onclick="removeLead('${l.id}')">Delete</button>
+      </div>
+    </div>`).join("");
+}
+function markLead(id, status) { A.setLeadStatus(id, status); renderLeads(); }
+function removeLead(id) { if (confirm("Delete this request?")) { A.deleteLead(id); renderLeads(); } }
+window.markLead = markLead; window.removeLead = removeLead;
+
+document.getElementById("exportLeads").addEventListener("click", () => {
+  const leads = A.loadLeads();
+  if (!leads.length) { alert("No requests to export."); return; }
+  const head = ["Date", "Name", "Phone", "Email", "Postcode", "Service", "Status", "Message"];
+  const rows = leads.map(l => [l.date, l.name, l.phone, l.email, l.postcode, l.service, l.status, (l.message || "").replace(/\n/g, " ")]);
+  const csv = [head, ...rows].map(r => r.map(c => `"${(c || "").toString().replace(/"/g, '""')}"`).join(",")).join("\n");
+  const blob = new Blob([csv], { type: "text/csv" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = "ecosteam-quote-requests.csv"; a.click();
+});
+</script>
+</body>
+</html>
