@@ -1,3 +1,6 @@
 .DS_Store
 *.log
 Thumbs.db
+
+# local marketing docs (not deployed)
+marketing/

@@ -7,14 +7,19 @@
 const CONFIG = {
   brand: "EcoSteam Clean",
   domain: "ecosteamclean.co.uk",
-  // ---- PLACEHOLDER CONTACT DETAILS — replace with real values ----
-  phoneDisplay: "07XXX XXX XXX",
-  phoneRaw: "07XXXXXXXXX",
-  email: "hello@ecosteamclean.co.uk",
+  phoneDisplay: "0800 274 0077",
+  phoneRaw: "08002740077",
+  email: "info@ecosteamclean.co.uk",
   areaShort: "Derby · Lincoln · Telford",
   areaLong: "Derby, Lincoln, Telford & the surrounding areas",
   hours: "Mon–Sun · 8am – 8pm",
-  whatsapp: "44XXXXXXXXXX",
+  whatsapp: "",   // set a mobile number (e.g. 447XXXXXXXXX) to show the WhatsApp button
+  // Registered address (used in footer + schema)
+  addr1: "Unit 21 Buntsford Drive",
+  city: "Bromsgrove",
+  region: "Worcestershire",
+  postcode: "B60 3AJ",
+  country: "GB",
 };
 
 /* ---------- Path helper (works from root and /services/) ---------- */
@@ -196,6 +201,7 @@ function buildFooter() {
             <li>${ICON.phone}<a href="tel:${CONFIG.phoneRaw}">${CONFIG.phoneDisplay}</a></li>
             <li>${ICON.mail}<a href="mailto:${CONFIG.email}">${CONFIG.email}</a></li>
             <li>${ICON.pin}<span>${CONFIG.areaLong}</span></li>
+            <li>${ICON.building}<span>${CONFIG.addr1}, ${CONFIG.city}, ${CONFIG.postcode}</span></li>
             <li>${ICON.clock}<span>${CONFIG.hours}</span></li>
           </ul>
         </div>
@@ -212,7 +218,7 @@ function buildFooter() {
     <div class="footer-watermark" aria-hidden="true">EcoSteam</div>
   </footer>
   <div class="fab">
-    <a class="wa" href="https://wa.me/${CONFIG.whatsapp}" aria-label="WhatsApp" target="_blank" rel="noopener">${ICON.wa}</a>
+    ${CONFIG.whatsapp && !/[xX]/.test(CONFIG.whatsapp) ? `<a class="wa" href="https://wa.me/${CONFIG.whatsapp}" aria-label="WhatsApp" target="_blank" rel="noopener">${ICON.wa}</a>` : ""}
     <a class="call" href="tel:${CONFIG.phoneRaw}" aria-label="Call us">${ICON.phone}</a>
   </div>`;
 }
