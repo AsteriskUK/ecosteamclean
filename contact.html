@@ -66,8 +66,10 @@
       <div class="form-card" data-reveal>
         <h2 class="h-md">Request a free quote</h2>
         <p class="muted" style="margin:.4rem 0 1.4rem">Fill in the form and we'll be in touch shortly.</p>
-        <div class="form-ok" id="formOk">✓ Thanks! Your request has been logged and your email app should open to send it to us. We'll be in touch soon.</div>
-        <form data-quote novalidate>
+        <div class="form-ok" id="formOk">✓ Thanks! Your request has been sent — we'll be in touch shortly.</div>
+        <form data-quote name="quote" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="quote">
+          <p hidden aria-hidden="true"><label>Leave this empty: <input name="bot-field"></label></p>
           <div class="field-row">
             <div class="field"><label for="name">Full name *</label><input id="name" name="name" required placeholder="Jane Smith"></div>
             <div class="field"><label for="phone">Phone *</label><input id="phone" name="phone" required placeholder="07XXX XXX XXX"></div>
@@ -85,7 +87,7 @@
             <textarea id="message" name="message" placeholder="e.g. 3 bedrooms, stairs and a 3-seat sofa. Some pet stains in the lounge."></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-lg" style="width:100%">Send My Request</button>
-          <p class="form-note">By submitting, your details are saved locally and your email app opens pre-filled. We never share your information.</p>
+          <p class="form-note">Your request is sent straight to our team. We never share your information.</p>
         </form>
       </div>
     </div>

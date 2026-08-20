@@ -261,7 +261,8 @@ function initForms() {
   document.querySelectorAll("form[data-quote]").forEach(form => {
     form.addEventListener("submit", (ev) => {
       ev.preventDefault();
-      const data = Object.fromEntries(new FormData(form).entries());
+      const fd = new FormData(form);
+      const data = Object.fromEntries(fd.entries());
       const lead = {
         id: "L" + Date.now(),
         date: new Date().toISOString(),
@@ -273,19 +274,31 @@ function initForms() {
         message: data.message || "",
         status: "new",
       };
+      // keep a local copy so the admin panel still shows submissions
       saveLead(lead);
 
-      const subject = `New quote request — ${lead.service}`;
-      const body =
-        `Name: ${lead.name}\nEmail: ${lead.email}\nPhone: ${lead.phone}\n` +
-        `Service: ${lead.service}\nPostcode: ${lead.postcode}\n\nMessage:\n${lead.message}\n\n— Sent from ${CONFIG.domain}`;
-      const mailto = `mailto:${CONFIG.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const showOk = () => {
+        const ok = form.querySelector(".form-ok");
+        if (ok) { ok.classList.add("show"); ok.scrollIntoView({ behavior: "smooth", block: "center" }); }
+        form.reset();
+      };
+      const mailtoFallback = () => {
+        const subject = `New quote request — ${lead.service}`;
+        const body =
+          `Name: ${lead.name}\nEmail: ${lead.email}\nPhone: ${lead.phone}\n` +
+          `Service: ${lead.service}\nPostcode: ${lead.postcode}\n\nMessage:\n${lead.message}\n\n— Sent from ${CONFIG.domain}`;
+        window.location.href = `mailto:${CONFIG.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      };
 
-      const ok = form.querySelector(".form-ok");
-      if (ok) { ok.classList.add("show"); ok.scrollIntoView({ behavior: "smooth", block: "center" }); }
-      form.reset();
-      // open email client
-      window.location.href = mailto;
+      // Submit to Netlify Forms (AJAX). Falls back to opening the user's
+      // email client if the POST isn't accepted (e.g. previewing off-Netlify).
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(fd).toString(),
+      })
+        .then(res => { showOk(); if (!res.ok) mailtoFallback(); })
+        .catch(() => { showOk(); mailtoFallback(); });
     });
   });
 }
