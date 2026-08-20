@@ -194,6 +194,24 @@
   </div>
 </section>
 
+<!-- ===== WORK GALLERY ===== -->
+<section class="section bg-soft" id="work">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="kicker">Real results</span>
+      <h2 class="h-lg mt-2">Recent jobs, <span class="accent">real</span> homes.</h2>
+      <p class="lead mt-2">No stock photos here — a few of the carpets and staircases we've recently brought back to life across the area.</p>
+    </div>
+    <div class="gallery" id="gallery" data-reveal></div>
+  </div>
+</section>
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose" aria-label="Close">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+  <img id="lbImg" src="" alt="">
+</div>
+
 <!-- ===== CTA ===== -->
 <section class="section-sm">
   <div class="wrap">
@@ -293,6 +311,40 @@
     };
     window.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
     update();
+  })();
+
+  // ---- Recent-work gallery + lightbox ----
+  (function () {
+    const mount = document.getElementById("gallery");
+    if (!mount) return;
+    const shots = [
+      ["gallery-01.jpg", "Bedroom carpet"],
+      ["gallery-02.jpg", "Staircase"],
+      ["gallery-03.jpg", "Loft bedroom"],
+      ["gallery-04.jpg", "Stairs & landing"],
+      ["gallery-05.jpg", "Staircase"],
+      ["gallery-06.jpg", "Hallway"],
+      ["gallery-07.jpg", "Deep steam clean"],
+      ["gallery-08.jpg", "Winding staircase"],
+      ["gallery-09.jpg", "Lounge carpet"],
+      ["gallery-10.jpg", "Staircase"],
+      ["gallery-11.jpg", "Landing"],
+      ["gallery-12.jpg", "Hallway & stairs"],
+    ];
+    mount.innerHTML = shots.map(([f, cap]) =>
+      `<figure data-full="assets/photos/${f}"><img src="assets/photos/${f}" alt="EcoSteam Clean — ${cap}" loading="lazy"><figcaption>${cap}</figcaption></figure>`
+    ).join("");
+
+    const lb = document.getElementById("lightbox");
+    const lbImg = document.getElementById("lbImg");
+    const open = (src, alt) => { lbImg.src = src; lbImg.alt = alt; lb.classList.add("open"); document.body.style.overflow = "hidden"; };
+    const close = () => { lb.classList.remove("open"); document.body.style.overflow = ""; };
+    mount.querySelectorAll("figure").forEach(fig => {
+      fig.addEventListener("click", () => open(fig.dataset.full, fig.querySelector("img").alt));
+    });
+    document.getElementById("lbClose").addEventListener("click", close);
+    lb.addEventListener("click", e => { if (e.target === lb) close(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
   })();
 
   renderBlogList("blogPreview", 3);

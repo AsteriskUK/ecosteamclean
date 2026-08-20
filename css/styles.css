@@ -345,6 +345,26 @@ body.nav-open .burger span::after { top: 0; transform: rotate(-45deg); }
 .stat .n { font-family: var(--display); font-weight: 800; font-size: clamp(2.4rem,4.5vw,3.4rem); letter-spacing: -.03em; color: var(--lime); }
 .stat .l { font-size: .92rem; color: #b8d4c6; font-weight: 500; margin-top: .3rem; }
 
+/* ---------- Work gallery (masonry) ---------- */
+.gallery { columns: 4 260px; column-gap: var(--gap); }
+.gallery figure { break-inside: avoid; margin: 0 0 var(--gap); border-radius: var(--r); overflow: hidden; position: relative; cursor: zoom-in; background: var(--forest); box-shadow: var(--shadow-sm); }
+.gallery img { width: 100%; display: block; transition: transform .6s var(--ease); }
+.gallery figure:hover img { transform: scale(1.06); }
+.gallery figure::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(5,35,26,.5)); opacity: 0; transition: opacity .3s; }
+.gallery figure:hover::after { opacity: 1; }
+.gallery figcaption { position: absolute; left: .9rem; bottom: .8rem; z-index: 2; font-family: var(--display); font-weight: 600; font-size: .82rem; color: #fff; opacity: 0; transform: translateY(6px); transition: .3s; display: flex; align-items: center; gap: .4rem; }
+.gallery figcaption::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--lime); }
+.gallery figure:hover figcaption { opacity: 1; transform: none; }
+@media (max-width: 900px) { .gallery { columns: 2 160px; } }
+
+/* Lightbox */
+.lightbox { position: fixed; inset: 0; z-index: 300; background: rgba(5,35,26,.94); display: none; place-items: center; padding: 5vw; backdrop-filter: blur(4px); }
+.lightbox.open { display: grid; }
+.lightbox img { max-width: 92vw; max-height: 88vh; border-radius: var(--r); box-shadow: var(--shadow-lg); }
+.lightbox .lb-close { position: absolute; top: 1.1rem; right: 1.3rem; width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,.1); display: grid; place-items: center; color: #fff; }
+.lightbox .lb-close:hover { background: var(--lime); color: var(--forest); }
+.lightbox .lb-close svg { width: 24px; height: 24px; }
+
 /* ---------- Testimonials ---------- */
 .testi-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: var(--gap); }
 .testi { background: #fbf9f3; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 2.1rem; transition: .35s var(--ease); }
