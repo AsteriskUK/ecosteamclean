@@ -5,46 +5,33 @@
    ========================================================= */
 
 const AREA_DETAILS = {
-  derby: {
-    name: "Derby", county: "Derbyshire", pcArea: "DE", central: "DE1",
+  bromsgrove: {
+    name: "Bromsgrove", county: "Worcestershire", pcArea: "B", central: "B60",
     districts: [
-      ["DE1", "City centre"], ["DE3", "Mickleover"],
-      ["DE21", "Chaddesden · Spondon · Oakwood"], ["DE22", "Allestree · Mackworth · Darley Abbey"],
-      ["DE23", "Normanton · Littleover · Sunny Hill"], ["DE24", "Alvaston · Allenton · Sinfin"],
+      ["B60", "Town centre · Aston Fields · Stoke Prior"], ["B61", "Catshill · Lickey End · Sidemoor"],
+      ["B45", "Rubery · Rednal · Lickey"], ["B48", "Alvechurch · Hopwood"],
+      ["B62 · B63", "Halesowen (nearby)"], ["B96 · B97", "Redditch (nearby)"],
     ],
-    intro: "Eco-friendly carpet, upholstery and steam cleaning across Derby — from the DE1 city centre out to Chaddesden, Allestree, Mickleover, Littleover and Alvaston. Non-toxic, pet- and child-safe, and fully insured, with carpets typically dry in just a few hours.",
+    intro: "Eco-friendly carpet, upholstery and steam cleaning right here in Bromsgrove — our home town. From the B60 town centre and Aston Fields out to Catshill, Lickey End, Rubery and Alvechurch. Non-toxic, pet- and child-safe, fully insured, and carpets typically dry in just a few hours.",
     faqs: [
-      { q: "Which parts of Derby do you cover?", a: "All of the DE postcodes across the city — DE1, DE3 and DE21–DE24 — plus the surrounding Derbyshire towns. If you're not sure, just pop your postcode in with your quote request and we'll confirm." },
-      { q: "Do you offer free quotes in Derby?", a: "Yes — free, no-obligation quotes and an optional free on-site demonstration anywhere in Derby, with no cancellation fees." },
-      { q: "How soon can you visit?", a: "We regularly have same-week availability across Derby, including evenings and weekends to fit around your schedule." },
+      { q: "Which parts of Bromsgrove do you cover?", a: "All of the B60 and B61 postcodes across the town, plus nearby B45 Rubery, B48 Alvechurch and out towards Redditch and Droitwich. We're a local Bromsgrove business, so we're often just minutes away." },
+      { q: "Do you offer free quotes in Bromsgrove?", a: "Yes — free, no-obligation quotes and an optional free on-site demonstration anywhere in Bromsgrove, with no cancellation fees." },
+      { q: "How soon can you visit?", a: "As we're based in Bromsgrove, we usually have same-week (often next-day) availability locally, including evenings and weekends." },
     ],
   },
-  lincoln: {
-    name: "Lincoln", county: "Lincolnshire", pcArea: "LN", central: "LN1",
+  birmingham: {
+    name: "Birmingham", county: "West Midlands", pcArea: "B", central: "B1",
     districts: [
-      ["LN1", "City centre · Uphill · Cathedral quarter"], ["LN2", "Ermine · Nettleham Road"],
-      ["LN3", "Cherry Willingham · Fiskerton"], ["LN4", "Branston · Washingborough · Heighington"],
-      ["LN5", "Bracebridge · Waddington"], ["LN6", "Birchwood · North Hykeham · Skellingthorpe"],
+      ["B1", "City centre"], ["B13", "Moseley"],
+      ["B14", "Kings Heath · Druids Heath"], ["B15", "Edgbaston"],
+      ["B17", "Harborne"], ["B29", "Selly Oak · Bournbrook"],
+      ["B30", "Bournville · Stirchley"], ["B31", "Northfield · Longbridge"],
     ],
-    intro: "Eco-friendly carpet, upholstery and steam cleaning across Lincoln — from the LN1 Cathedral quarter and Uphill down to Bracebridge, Birchwood, North Hykeham and Washingborough. Non-toxic, pet- and child-safe, fully insured, and gentle on delicate fibres.",
+    intro: "Eco-friendly carpet, upholstery and steam cleaning across Birmingham — from the B1 city centre through Edgbaston, Harborne and Moseley down to Selly Oak, Bournville, Kings Heath and Northfield. Non-toxic, pet- and child-safe, fully insured, and just a short drive from our Bromsgrove base.",
     faqs: [
-      { q: "Which parts of Lincoln do you cover?", a: "The full LN1–LN6 area across the city, plus the wider Lincolnshire villages nearby. Send your postcode with your enquiry and we'll confirm straight away." },
-      { q: "Are your products safe for older or listed homes?", a: "Yes. We use gentle, non-toxic steam methods that suit period properties and delicate natural fibres common around Lincoln's older streets." },
-      { q: "Do you offer end-of-tenancy cleans in Lincoln?", a: "We do — landlord-approved end-of-tenancy cleans including professional carpet cleaning, ideal for the city's large student and rental market." },
-    ],
-  },
-  telford: {
-    name: "Telford", county: "Shropshire", pcArea: "TF", central: "TF3",
-    districts: [
-      ["TF1", "Wellington · Leegomery · Donnington"], ["TF2", "Oakengates · Priorslee · St Georges"],
-      ["TF3", "Town centre · Stirchley · Brookside"], ["TF4", "Dawley · Lawley · Horsehill"],
-      ["TF6", "Rural — Bratton · Admaston"], ["TF7", "Madeley · Sutton Hill · Ironbridge"],
-    ],
-    intro: "Eco-friendly carpet, upholstery and steam cleaning across Telford — from the TF3 town centre to Wellington, Oakengates, Dawley, Madeley and Ironbridge. Non-toxic, pet- and child-safe, fully insured, and powered by heat rather than harsh chemicals.",
-    faqs: [
-      { q: "Which parts of Telford do you cover?", a: "All of the TF postcodes across the town — TF1–TF7 — and out into the surrounding Shropshire areas. Add your postcode to your quote request and we'll confirm." },
-      { q: "Can you work around my job?", a: "Absolutely — we offer evening and weekend slots across Telford, plus flexible out-of-hours cleaning for local businesses." },
-      { q: "Do you clean rugs and stairs too?", a: "Yes — stairs, landings, area rugs, curtains and mattresses are all part of what we do throughout Telford, not just room carpets." },
+      { q: "Which parts of Birmingham do you cover?", a: "We cover the B postcodes across the city, with a strong focus on south and central Birmingham — Selly Oak, Bournville, Northfield, Kings Heath, Edgbaston, Harborne, Moseley and the city centre. Send your postcode with your quote and we'll confirm." },
+      { q: "Are you a Birmingham-based company?", a: "We're based just outside the city in Bromsgrove, which keeps our overheads (and your prices) low while still reaching Birmingham quickly — especially the southern suburbs." },
+      { q: "Do you clean rugs, stairs, curtains and mattresses too?", a: "Yes — stairs, landings, area rugs, curtains and mattresses are all part of what we do across Birmingham, not just room carpets." },
     ],
   },
 };

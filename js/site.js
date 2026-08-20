@@ -10,8 +10,8 @@ const CONFIG = {
   phoneDisplay: "0800 274 0077",
   phoneRaw: "08002740077",
   email: "info@ecosteamclean.co.uk",
-  areaShort: "Derby · Lincoln · Telford",
-  areaLong: "Derby, Lincoln, Telford & the surrounding areas",
+  areaShort: "Bromsgrove · Birmingham",
+  areaLong: "Bromsgrove, Birmingham & the West Midlands",
   hours: "Mon–Sun · 8am – 8pm",
   whatsapp: "",   // set a mobile number (e.g. 447XXXXXXXXX) to show the WhatsApp button
   // Registered address (used in footer + schema)
@@ -89,9 +89,8 @@ const SERVICES = [
 
 /* ---------- Areas served (location landing pages) ---------- */
 const AREAS = [
-  { slug: "derby",   name: "Derby",   file: "carpet-cleaning-derby.html" },
-  { slug: "lincoln", name: "Lincoln", file: "carpet-cleaning-lincoln.html" },
-  { slug: "telford", name: "Telford", file: "carpet-cleaning-telford.html" },
+  { slug: "bromsgrove", name: "Bromsgrove", file: "carpet-cleaning-bromsgrove.html" },
+  { slug: "birmingham", name: "Birmingham", file: "carpet-cleaning-birmingham.html" },
 ];
 
 /* ---------- Build header ---------- */
