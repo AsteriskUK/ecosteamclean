@@ -11,8 +11,8 @@ const CONFIG = {
   phoneDisplay: "07XXX XXX XXX",
   phoneRaw: "07XXXXXXXXX",
   email: "hello@ecosteamclean.co.uk",
-  areaShort: "London & Home Counties",
-  areaLong: "London, Surrey, Kent, Essex & the surrounding Home Counties",
+  areaShort: "Derby · Lincoln · Telford",
+  areaLong: "Derby, Lincoln, Telford & the surrounding areas",
   hours: "Mon–Sun · 8am – 8pm",
   whatsapp: "44XXXXXXXXXX",
 };
@@ -82,11 +82,21 @@ const SERVICES = [
   { slug: "commercial-cleaning", name: "Commercial Cleaning", icon: "building", tag: "", blurb: "Offices, hotels, gyms & retail kept spotless with flexible out-of-hours schedules." },
 ];
 
+/* ---------- Areas served (location landing pages) ---------- */
+const AREAS = [
+  { slug: "derby",   name: "Derby",   file: "carpet-cleaning-derby.html" },
+  { slug: "lincoln", name: "Lincoln", file: "carpet-cleaning-lincoln.html" },
+  { slug: "telford", name: "Telford", file: "carpet-cleaning-telford.html" },
+];
+
 /* ---------- Build header ---------- */
 function buildHeader() {
   const active = document.body.getAttribute("data-page") || "";
   const svcDrop = SERVICES.map(s =>
     `<a href="${P('services/' + s.slug + '.html')}"><span class="di">${ICON[s.icon]}</span>${s.name}</a>`
+  ).join("");
+  const areaDrop = AREAS.map(a =>
+    `<a href="${P('areas/' + a.file)}"><span class="di">${ICON.pin}</span>Cleaning in ${a.name}</a>`
   ).join("");
 
   return `
@@ -117,6 +127,10 @@ function buildHeader() {
             <a href="${P('services.html')}" class="${active==='services'?'active':''}">Services ${ICON.chev}</a>
             <div class="drop">${svcDrop}</div>
           </li>
+          <li class="has-drop">
+            <a href="${P('areas/' + AREAS[0].file)}" class="${active==='areas'?'active':''}">Areas ${ICON.chev}</a>
+            <div class="drop">${areaDrop}</div>
+          </li>
           <li><a href="${P('about.html')}" class="${active==='about'?'active':''}">About</a></li>
           <li><a href="${P('blog.html')}" class="${active==='blog'?'active':''}">Blog</a></li>
           <li><a href="${P('contact.html')}" class="${active==='contact'?'active':''}">Contact</a></li>
@@ -135,6 +149,8 @@ function buildHeader() {
     <a class="m-link" href="${P('index.html')}">Home</a>
     <a class="m-link" href="${P('services.html')}">Services</a>
     <div class="m-sub">${SERVICES.map(s=>`<a href="${P('services/'+s.slug+'.html')}">${s.name}</a>`).join("")}</div>
+    <a class="m-link" href="${P('areas/'+AREAS[0].file)}">Areas we cover</a>
+    <div class="m-sub">${AREAS.map(a=>`<a href="${P('areas/'+a.file)}">Cleaning in ${a.name}</a>`).join("")}</div>
     <a class="m-link" href="${P('about.html')}">About</a>
     <a class="m-link" href="${P('blog.html')}">Blog</a>
     <a class="m-link" href="${P('contact.html')}">Contact</a>
@@ -166,11 +182,12 @@ function buildFooter() {
           ${svcLinks}
         </div>
         <div class="footer-col">
-          <h4>Company</h4>
+          <h4>Areas we cover</h4>
+          ${AREAS.map(a => `<a href="${P('areas/' + a.file)}">Cleaning in ${a.name}</a>`).join("")}
+          <h4 style="margin-top:1.4rem">Company</h4>
           <a href="${P('about.html')}">About Us</a>
           <a href="${P('blog.html')}">Blog & Tips</a>
           <a href="${P('contact.html')}">Contact</a>
-          <a href="${P('contact.html')}">Book Online</a>
           <a href="${P('admin.html')}">Admin</a>
         </div>
         <div class="footer-col">
@@ -403,4 +420,4 @@ document.addEventListener("DOMContentLoaded", () => {
 window.__esInteract = () => { initMagnetic(); initBeforeAfter(); };
 
 /* expose for other scripts */
-window.ESC = { CONFIG, ICON, SERVICES, P, LOGO };
+window.ESC = { CONFIG, ICON, SERVICES, AREAS, P, LOGO };

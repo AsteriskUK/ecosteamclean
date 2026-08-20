@@ -4,12 +4,33 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EcoSteam Clean — Eco-Friendly Carpet & Upholstery Steam Cleaning</title>
-<meta name="description" content="Eco-friendly steam cleaning for carpets, upholstery, rugs, curtains and whole homes across London & the Home Counties. Non-toxic, pet-safe, fully insured. Free quotes.">
+<meta name="description" content="Eco-friendly steam cleaning for carpets, upholstery, rugs, curtains and whole homes across Derby, Lincoln & Telford. Non-toxic, pet-safe, fully insured. Free quotes.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><rect width='48' height='48' rx='13' fill='%2316a36b'/><path d='M24 11c-1.2 3.4-6.5 7.8-6.5 12.5a6.5 6.5 0 0 0 13 0C30.5 18.8 25.2 14.4 24 11z' fill='white'/></svg>">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://ecosteamclean.co.uk/#business",
+  "name": "EcoSteam Clean",
+  "description": "Eco-friendly carpet, upholstery and steam cleaning across Derby, Lincoln and Telford. Non-toxic, pet- and child-safe, and fully insured.",
+  "url": "https://ecosteamclean.co.uk/",
+  "image": "https://ecosteamclean.co.uk/assets/photos/hero.jpg",
+  "telephone": "07XXX XXX XXX",
+  "email": "hello@ecosteamclean.co.uk",
+  "priceRange": "££",
+  "openingHours": "Mo-Su 08:00-20:00",
+  "areaServed": [
+    {"@type": "City", "name": "Derby"},
+    {"@type": "City", "name": "Lincoln"},
+    {"@type": "City", "name": "Telford"}
+  ],
+  "serviceType": "Carpet cleaning, upholstery cleaning, rug cleaning, curtain and mattress cleaning, end of tenancy cleaning, deep cleaning, stain and odour removal, commercial cleaning"
+}
+</script>
 </head>
 <body data-page="home" data-root="">
 <div id="site-header-mount"></div>
@@ -20,7 +41,7 @@
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <span class="hero-kicker kicker on-dark" data-reveal>Eco steam cleaning · London &amp; Home Counties</span>
+        <span class="hero-kicker kicker on-dark" data-reveal>Eco steam cleaning · Derby · Lincoln · Telford</span>
         <h1 class="hero-title" data-reveal>A deeper, <span class="accent">greener</span> clean for every home.</h1>
         <p class="hero-lead lead" data-reveal>Professional steam cleaning for carpets, upholstery, rugs, curtains &amp; whole homes — powered by heat, not harsh chemicals.</p>
         <div class="hero-actions" data-reveal>
@@ -212,6 +233,18 @@
   <img id="lbImg" src="" alt="">
 </div>
 
+<!-- ===== AREAS ===== -->
+<section class="section" id="areas">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="kicker">Areas we cover</span>
+      <h2 class="h-lg mt-2">Local cleaning across <span class="accent">the Midlands</span></h2>
+      <p class="lead mt-2">Insured, eco-friendly and genuinely local — serving Derby, Lincoln, Telford and the surrounding postcodes.</p>
+    </div>
+    <div class="cards" id="areaCards"></div>
+  </div>
+</section>
+
 <!-- ===== CTA ===== -->
 <section class="section-sm">
   <div class="wrap">
@@ -345,6 +378,25 @@
     document.getElementById("lbClose").addEventListener("click", close);
     lb.addEventListener("click", e => { if (e.target === lb) close(); });
     document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+  })();
+
+  // ---- Areas we cover ----
+  (function () {
+    const mount = document.getElementById("areaCards");
+    if (!mount) return;
+    const blurbs = {
+      derby:   "Carpet, upholstery & steam cleaning across Derby — DE1, DE3 and DE21–DE24.",
+      lincoln: "Carpet, upholstery & steam cleaning across Lincoln — LN1 to LN6.",
+      telford: "Carpet, upholstery & steam cleaning across Telford — TF1 to TF7.",
+    };
+    mount.innerHTML = window.ESC.AREAS.map(a => `
+      <a class="svc-card" data-reveal href="areas/${a.file}">
+        <div class="svc-ic">${window.ESC.ICON.pin}</div>
+        <h3>${a.name}</h3>
+        <p>${blurbs[a.slug] || ("Cleaning across " + a.name + " and nearby.")}</p>
+        <span class="svc-link">View ${a.name} ${window.ESC.ICON.arrow}</span>
+      </a>`).join("");
+    window.__reveal && window.__reveal();
   })();
 
   renderBlogList("blogPreview", 3);
