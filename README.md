@@ -1,6 +1,6 @@
-# EcoSteam Clean
+# Ecologics Cleaning
 
-Marketing website for **EcoSteam Clean** — eco-friendly steam cleaning for carpets, upholstery, rugs, curtains & whole homes across London & the Home Counties.
+Marketing website for **Ecologics Cleaning** — eco-friendly steam cleaning for carpets, upholstery, rugs, curtains & whole homes across London & the Home Counties.
 
 Self-contained static site (HTML + CSS + vanilla JS). No build step, no server, no dependencies to install.
 

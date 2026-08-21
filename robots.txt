@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin.html
 
-Sitemap: https://ecosteamclean.co.uk/sitemap.xml
+Sitemap: https://ecologicscleaning.co.uk/sitemap.xml

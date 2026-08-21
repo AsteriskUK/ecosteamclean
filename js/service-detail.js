@@ -1,5 +1,5 @@
 /* =========================================================
-   EcoSteam Clean — service detail page renderer
+   Ecologics Cleaning — service detail page renderer
    Each services/<slug>.html sets data-slug; this fills it in.
    ========================================================= */
 
@@ -156,7 +156,7 @@ function renderServiceDetail() {
   const mount = document.getElementById("service-mount");
   if (!d || !mount) return;
   const I = window.ESC.ICON;
-  document.title = `${d.title} — EcoSteam Clean`;
+  document.title = `${d.title} — Ecologics Cleaning`;
 
   const otherServices = window.ESC.SERVICES.filter(s => s.slug !== slug).slice(0, 3);
 
@@ -175,7 +175,7 @@ function renderServiceDetail() {
           </div>
         </div>
         <div class="media-frame" style="max-width:420px;margin-left:auto">
-          <img class="photo" src="../assets/photos/svc-${slug}.jpg" alt="${d.title} by EcoSteam Clean">
+          <img class="photo" src="../assets/photos/svc-${slug}.jpg" alt="${d.title} by Ecologics Cleaning">
         </div>
       </div>
     </div>

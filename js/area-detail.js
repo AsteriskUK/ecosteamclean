@@ -1,5 +1,5 @@
 /* =========================================================
-   EcoSteam Clean — location (area) landing page renderer
+   Ecologics Cleaning — location (area) landing page renderer
    Each areas/<file>.html sets data-slug; this fills it in.
    Unique copy per town for local SEO (no thin duplicates).
    ========================================================= */

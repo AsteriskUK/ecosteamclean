@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Admin — EcoSteam Clean</title>
+<title>Admin — Ecologics Cleaning</title>
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,7 +50,7 @@
   <div class="login-wrap">
     <div class="login-card">
       <svg width="56" height="56" viewBox="0 0 48 48" style="margin:0 auto 1rem"><rect width="48" height="48" rx="13" fill="#16a36b"/><path d="M24 11c-1.2 3.4-6.5 7.8-6.5 12.5a6.5 6.5 0 0 0 13 0C30.5 18.8 25.2 14.4 24 11z" fill="#fff"/></svg>
-      <h1 class="h-md">EcoSteam Admin</h1>
+      <h1 class="h-md">Ecologics Admin</h1>
       <p class="muted" style="margin:.4rem 0 1.4rem">Enter your PIN to manage the site.</p>
       <div class="field"><input class="pin-in" id="pinInput" type="password" inputmode="numeric" maxlength="8" placeholder="••••"></div>
       <p id="pinErr" style="color:#c0392b;font-size:.9rem;display:none;margin-bottom:.8rem">Incorrect PIN. Try again.</p>
@@ -64,7 +64,7 @@
 <div id="dashView" style="display:none">
   <div class="admin-top">
     <div class="wrap">
-      <a class="brand" href="index.html"><svg class="logo-mark" viewBox="0 0 48 48"><rect width="48" height="48" rx="13" fill="url(#g2)"/><path d="M24 11c-1.2 3.4-6.5 7.8-6.5 12.5a6.5 6.5 0 0 0 13 0C30.5 18.8 25.2 14.4 24 11z" fill="#fff"/><defs><linearGradient id="g2" x1="0" y1="0" x2="48" y2="48"><stop stop-color="#16a36b"/><stop offset="1" stop-color="#16b6c4"/></linearGradient></defs></svg><span>EcoSteam <small style="color:var(--green-300)">Admin</small></span></a>
+      <a class="brand" href="index.html"><svg class="logo-mark" viewBox="0 0 48 48"><rect width="48" height="48" rx="13" fill="url(#g2)"/><path d="M24 11c-1.2 3.4-6.5 7.8-6.5 12.5a6.5 6.5 0 0 0 13 0C30.5 18.8 25.2 14.4 24 11z" fill="#fff"/><defs><linearGradient id="g2" x1="0" y1="0" x2="48" y2="48"><stop stop-color="#16a36b"/><stop offset="1" stop-color="#16b6c4"/></linearGradient></defs></svg><span>Ecologics <small style="color:var(--green-300)">Admin</small></span></a>
       <div style="display:flex;gap:.7rem">
         <a class="btn btn-outline" href="index.html" style="border-color:rgba(255,255,255,.3)">View site</a>
         <button class="btn btn-white" id="logoutBtn">Log out</button>
@@ -95,7 +95,7 @@
               <div class="field"><label>Read time (min)</label><input id="p_read" type="number" min="1" value="5"></div>
             </div>
             <div class="field-row">
-              <div class="field"><label>Author</label><input id="p_author" value="The EcoSteam Team"></div>
+              <div class="field"><label>Author</label><input id="p_author" value="The Ecologics Team"></div>
               <div class="field"><label>Date</label><input id="p_date" type="date"></div>
             </div>
             <div class="field"><label>Excerpt (short summary) *</label><textarea id="p_excerpt" required style="min-height:70px" placeholder="One or two sentences that appear on the blog card."></textarea></div>
@@ -172,7 +172,7 @@ function initEditor() {
       slug,
       title,
       category: document.getElementById("p_category").value,
-      author: document.getElementById("p_author").value.trim() || "The EcoSteam Team",
+      author: document.getElementById("p_author").value.trim() || "The Ecologics Team",
       date: document.getElementById("p_date").value || new Date().toISOString().slice(0, 10),
       read: parseInt(document.getElementById("p_read").value) || 5,
       excerpt: document.getElementById("p_excerpt").value.trim(),
@@ -189,7 +189,7 @@ function resetEditor() {
   document.getElementById("postForm").reset();
   document.getElementById("p_original_slug").value = "";
   document.getElementById("p_date").value = new Date().toISOString().slice(0, 10);
-  document.getElementById("p_author").value = "The EcoSteam Team";
+  document.getElementById("p_author").value = "The Ecologics Team";
   document.getElementById("editorTitle").textContent = "New post";
 }
 function editPost(slug) {
@@ -200,7 +200,7 @@ function editPost(slug) {
   document.getElementById("p_title").value = p.title;
   document.getElementById("p_category").value = p.category;
   document.getElementById("p_read").value = p.read || 5;
-  document.getElementById("p_author").value = p.author || "The EcoSteam Team";
+  document.getElementById("p_author").value = p.author || "The Ecologics Team";
   document.getElementById("p_date").value = p.date;
   document.getElementById("p_excerpt").value = p.excerpt;
   document.getElementById("p_body").value = p.body;
@@ -277,7 +277,7 @@ document.getElementById("exportLeads").addEventListener("click", () => {
   const csv = [head, ...rows].map(r => r.map(c => `"${(c || "").toString().replace(/"/g, '""')}"`).join(",")).join("\n");
   const blob = new Blob([csv], { type: "text/csv" });
   const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob); a.download = "ecosteam-quote-requests.csv"; a.click();
+  a.href = URL.createObjectURL(blob); a.download = "ecologics-quote-requests.csv"; a.click();
 });
 </script>
 </body>

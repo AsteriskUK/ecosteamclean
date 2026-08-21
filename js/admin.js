@@ -1,5 +1,5 @@
 /* =========================================================
-   EcoSteam Clean — Admin CMS
+   Ecologics Cleaning — Admin CMS
    PIN-gated. Manage blog posts + view quote leads.
    All data lives in localStorage (self-contained, no server).
    ========================================================= */

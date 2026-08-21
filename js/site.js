@@ -1,15 +1,15 @@
 /* =========================================================
-   EcoSteam Clean — shared site logic
+   Ecologics Cleaning — shared site logic
    Injects header + footer, handles nav, forms, animations.
    Self-contained. Placeholders marked CONFIG below.
    ========================================================= */
 
 const CONFIG = {
-  brand: "EcoSteam Clean",
-  domain: "ecosteamclean.co.uk",
+  brand: "Ecologics Cleaning",
+  domain: "ecologicscleaning.co.uk",
   phoneDisplay: "0800 274 0077",
   phoneRaw: "08002740077",
-  email: "info@ecosteamclean.co.uk",
+  email: "info@ecologicscleaning.co.uk",
   areaShort: "Bromsgrove · Birmingham",
   areaLong: "Bromsgrove, Birmingham & the West Midlands",
   hours: "Mon–Sun · 8am – 8pm",
@@ -122,7 +122,7 @@ function buildHeader() {
     <div class="wrap nav">
       <a class="brand" href="${P('index.html')}">
         ${LOGO}
-        <span>${CONFIG.brand}<small>Eco Steam Cleaning</small></span>
+        <span>${CONFIG.brand}<small>Eco Cleaning Services</small></span>
       </a>
       <nav aria-label="Primary">
         <ul class="nav-links">
@@ -172,7 +172,7 @@ function buildFooter() {
     <div class="wrap">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a class="brand" href="${P('index.html')}">${LOGO}<span style="color:#fff">${CONFIG.brand}<small>Eco Steam Cleaning</small></span></a>
+          <a class="brand" href="${P('index.html')}">${LOGO}<span style="color:#fff">${CONFIG.brand}<small>Eco Cleaning Services</small></span></a>
           <p>Eco-friendly steam carpet, upholstery & deep cleaning across ${CONFIG.areaLong}. Non-toxic, family- and pet-safe, and fully insured.</p>
           <div class="footer-social">
             <a href="#" aria-label="Facebook">${ICON.fb}</a>
@@ -214,7 +214,7 @@ function buildFooter() {
         </span>
       </div>
     </div>
-    <div class="footer-watermark" aria-hidden="true">EcoSteam</div>
+    <div class="footer-watermark" aria-hidden="true">Ecologics</div>
   </footer>
   <div class="fab">
     ${CONFIG.whatsapp && !/[xX]/.test(CONFIG.whatsapp) ? `<a class="wa" href="https://wa.me/${CONFIG.whatsapp}" aria-label="WhatsApp" target="_blank" rel="noopener">${ICON.wa}</a>` : ""}

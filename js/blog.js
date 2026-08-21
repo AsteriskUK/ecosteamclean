@@ -1,5 +1,5 @@
 /* =========================================================
-   EcoSteam Clean — blog engine
+   Ecologics Cleaning — blog engine
    Seed posts (hard-coded) merged with admin posts (localStorage).
    Renders listing (blog.html) and single post (post.html?id=slug).
    ========================================================= */
@@ -13,7 +13,7 @@ const SEED_POSTS = [
     image: "assets/photos/hero.jpg",
     title: "How Often Should You Really Clean Your Carpets?",
     category: "Carpet Care",
-    author: "The EcoSteam Team",
+    author: "The Ecologics Team",
     date: "2026-07-28",
     read: 6,
     excerpt: "Vacuuming isn't enough. Here's the professional guide to how often carpets need a deep steam clean — by room, household and lifestyle.",
@@ -44,7 +44,7 @@ const SEED_POSTS = [
     image: "assets/photos/svc-stain-removal.jpg",
     title: "How to Remove a Red Wine Stain From Carpet (Before It Sets)",
     category: "Stain Removal",
-    author: "The EcoSteam Team",
+    author: "The Ecologics Team",
     date: "2026-07-15",
     read: 5,
     excerpt: "Spilled red wine? Don't panic — and don't scrub. Follow this step-by-step emergency method to stop the stain setting for good.",
@@ -67,7 +67,7 @@ const SEED_POSTS = [
     image: "assets/photos/blog-eco.jpg",
     title: "Eco-Friendly Steam Cleaning: Why It's Better for Your Home",
     category: "Eco Cleaning",
-    author: "The EcoSteam Team",
+    author: "The Ecologics Team",
     date: "2026-06-30",
     read: 7,
     excerpt: "Non-toxic doesn't mean less powerful. Here's how green steam cleaning protects your family, pets and the planet — without cutting corners.",
@@ -84,14 +84,14 @@ const SEED_POSTS = [
 </ul>
 <blockquote>Green cleaning isn't a compromise. Steam reaches temperatures that sanitise on contact — often more hygienic than chemical-heavy alternatives.</blockquote>
 <h2>Our promise</h2>
-<p>Every EcoSteam clean uses non-toxic, pet- and child-safe methods as standard. <a class="inline" href="../about.html">Learn more about our approach</a> or <a class="inline" href="../contact.html">book a green clean today</a>.</p>`
+<p>Every Ecologics clean uses non-toxic, pet- and child-safe methods as standard. <a class="inline" href="../about.html">Learn more about our approach</a> or <a class="inline" href="../contact.html">book a green clean today</a>.</p>`
   },
   {
     slug: "end-of-tenancy-cleaning-checklist",
     image: "assets/photos/blog-tenancy.jpg",
     title: "The Complete End of Tenancy Cleaning Checklist (Get Your Deposit Back)",
     category: "End of Tenancy",
-    author: "The EcoSteam Team",
+    author: "The Ecologics Team",
     date: "2026-06-18",
     read: 8,
     excerpt: "Moving out? Deposit disputes are almost always about cleaning. Use this landlord-approved checklist to leave nothing to chance.",
@@ -124,7 +124,7 @@ const SEED_POSTS = [
     image: "assets/photos/svc-upholstery-cleaning.jpg",
     title: "5 Ways to Keep Your Upholstery Looking New for Longer",
     category: "Upholstery",
-    author: "The EcoSteam Team",
+    author: "The Ecologics Team",
     date: "2026-06-02",
     read: 5,
     excerpt: "A good sofa is an investment. These five simple habits keep the fabric fresh, the colours rich and the springs supported for years.",
@@ -152,7 +152,7 @@ const SEED_POSTS = [
     image: "assets/photos/svc-rug-cleaning.jpg",
     title: "How Long Does Carpet Take to Dry After Steam Cleaning?",
     category: "Carpet Care",
-    author: "The EcoSteam Team",
+    author: "The Ecologics Team",
     date: "2026-05-20",
     read: 4,
     excerpt: "One of the most common questions we get. Here's what affects drying time — and how the pros keep it fast.",
@@ -238,7 +238,7 @@ function renderSinglePost(mountId) {
       <p class="lead mt-2">That post may have moved. <a class="inline" href="${P('blog.html')}">Back to the blog</a>.</p></div>`;
     return;
   }
-  document.title = `${post.title} — EcoSteam Clean`;
+  document.title = `${post.title} — Ecologics Cleaning`;
 
   // related
   const related = getAllPosts().filter(p => p.slug !== post.slug).slice(0, 3);
@@ -257,7 +257,7 @@ function renderSinglePost(mountId) {
         <div class="crumbs"><a href="${P('index.html')}">Home</a>${window.ESC.ICON.arrow}<a href="${P('blog.html')}">Blog</a>${window.ESC.ICON.arrow}<span>${post.category}</span></div>
         <span class="pill" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);color:#d9f5e6">${post.category}</span>
         <h1 style="margin-top:1rem;max-width:22ch">${post.title}</h1>
-        <p style="margin-top:1rem">By ${post.author || 'The EcoSteam Team'} · ${fmtDate(post.date)} · ${post.read||5} min read</p>
+        <p style="margin-top:1rem">By ${post.author || 'The Ecologics Team'} · ${fmtDate(post.date)} · ${post.read||5} min read</p>
       </div>
     </div>
     <div class="section">
