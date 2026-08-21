@@ -168,7 +168,7 @@ function renderServiceDetail() {
         <div>
           <span class="eyebrow on-dark">${I[d.icon]} Service</span>
           <h1 class="mt-2">${d.title}</h1>
-          <p class="lead mt-2" style="color:#d6f0e4">${d.tagline}</p>
+          <p class="lead mt-2" style="color:#cbdcea">${d.tagline}</p>
           <div class="hero-cta" style="margin-top:1.6rem">
             <a class="btn btn-white btn-lg" href="../contact.html?service=${encodeURIComponent(d.title)}">Get a Free Quote</a>
             <a class="btn btn-outline btn-lg" href="tel:${window.ESC.CONFIG.phoneRaw}">${I.phone} Call Us</a>
@@ -218,7 +218,7 @@ function renderServiceDetail() {
     <div class="wrap">
       <div class="cta-band" data-reveal>
         <div class="cta-flex">
-          <div><h2 class="h-lg">Book your ${d.title.toLowerCase()}</h2><p class="lead mt-2" style="color:#d6f0e4">Free quotes · fully insured · non-toxic & pet-safe.</p></div>
+          <div><h2 class="h-lg">Book your ${d.title.toLowerCase()}</h2><p class="lead mt-2" style="color:#cbdcea">Free quotes · fully insured · non-toxic & pet-safe.</p></div>
           <a class="btn btn-white btn-lg" href="../contact.html?service=${encodeURIComponent(d.title)}">Get a Free Quote ${I.arrow}</a>
         </div>
       </div>

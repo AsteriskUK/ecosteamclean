@@ -51,7 +51,7 @@ function renderAreaDetail() {
       <div class="crumbs"><a href="../index.html">Home</a>${I.arrow}<a href="../areas/${window.ESC.AREAS[0].file}">Areas</a>${I.arrow}<span>${d.name}</span></div>
       <span class="kicker on-dark">${I.pin} ${d.county} · ${d.pcArea} postcodes</span>
       <h1 class="mt-2">Carpet &amp; Upholstery Cleaning in <span class="accent">${d.name}</span></h1>
-      <p class="lead mt-2" style="color:#b8d4c6">${d.intro}</p>
+      <p class="lead mt-2" style="color:#a9c4da">${d.intro}</p>
       <div class="hero-actions" style="margin-top:1.6rem">
         <a class="btn btn-primary btn-lg magnetic" href="../contact.html?service=${encodeURIComponent('Cleaning in ' + d.name)}">Get a free quote</a>
         <a class="btn btn-outline btn-lg" href="tel:${C.phoneRaw}">${I.phone} Call us</a>
