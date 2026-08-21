@@ -80,8 +80,9 @@ body::before {
 .scroll-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 9999; pointer-events: none; }
 .scroll-progress > span { display: block; height: 100%; width: 100%; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, var(--moss), var(--lime)); box-shadow: 0 0 12px rgba(201,242,78,.6); }
 
-/* ---------- Animated logo ---------- */
-.logo-mark { overflow: visible; }
+/* ---------- Logo ---------- */
+.logo-mark { overflow: visible; object-fit: contain; }
+img.logo-mark { display: block; }
 .lm-drop { transform-box: fill-box; transform-origin: 50% 62%; animation: lm-bob 3.4s var(--ease) infinite; }
 @keyframes lm-bob { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-.6px) scale(1.05); } }
 .lm-steam path { transform-box: fill-box; transform-origin: 50% 100%; opacity: 0; }

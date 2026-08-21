@@ -63,17 +63,8 @@ const ICON = {
   yt: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 8.2a3 3 0 0 0-2.1-2.1C18 5.5 12 5.5 12 5.5s-6 0-7.9.6A3 3 0 0 0 2 8.2 31 31 0 0 0 1.7 12 31 31 0 0 0 2 15.8a3 3 0 0 0 2.1 2.1c1.9.6 7.9.6 7.9.6s6 0 7.9-.6a3 3 0 0 0 2.1-2.1c.3-1.2.3-3.8.3-3.8s0-2.6-.3-3.8zM10 15V9l5 3-5 3z"/></svg>',
 };
 
-/* ---------- Logo mark ---------- */
-const LOGO = `<svg class="logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <rect width="48" height="48" rx="13" fill="url(#lg)"/>
-  <g class="lm-steam" stroke="#fff" stroke-width="1.6" stroke-linecap="round">
-    <path class="s1" d="M21 12.5c-1.3-1.5-1.3-2.9 0-4.4"/>
-    <path class="s2" d="M27 12.5c1.3-1.5 1.3-2.9 0-4.4"/>
-  </g>
-  <path class="lm-drop" d="M24 13c-1.1 3.2-6.2 7.4-6.2 12a6.2 6.2 0 0 0 12.4 0C30.2 20.4 25.1 16.2 24 13z" fill="#fff"/>
-  <path d="M24 35c4.3 0 6.7-2.3 7.2-5M24 35c-4.3 0-6.7-2.3-7.2-5" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".6"/>
-  <defs><linearGradient id="lg" x1="0" y1="0" x2="48" y2="48"><stop stop-color="#16a36b"/><stop offset="1" stop-color="#2fd0c4"/></linearGradient></defs>
-</svg>`;
+/* ---------- Logo mark (Ecologics emblem) ---------- */
+const LOGO = `<img class="logo-mark" src="${P('assets/logo-mark.png')}" alt="Ecologics Cleaning" width="46" height="46">`;
 
 /* ---------- Service list (single source of truth) ---------- */
 const SERVICES = [
