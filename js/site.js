@@ -291,22 +291,18 @@ function initForms() {
       saveLead(lead);
 
       const showOk = () => {
-        const ok = form.querySelector(".form-ok");
+        // .form-ok sits alongside the form (not inside it), so look in the
+        // parent container, then fall back to the document.
+        const ok = (form.parentElement && form.parentElement.querySelector(".form-ok")) || document.querySelector(".form-ok");
         if (ok) { ok.classList.add("show"); ok.scrollIntoView({ behavior: "smooth", block: "center" }); }
         form.reset();
-      };
-      const mailtoFallback = () => {
-        const subject = `New quote request — ${lead.service}`;
-        const body =
-          `Name: ${lead.name}\nEmail: ${lead.email}\nPhone: ${lead.phone}\n` +
-          `Service: ${lead.service}\nPostcode: ${lead.postcode}\n\nMessage:\n${lead.message}\n\n— Sent from ${CONFIG.domain}`;
-        window.location.href = `mailto:${CONFIG.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       };
 
       // Submit to Netlify Forms (AJAX), then send the visitor to the
       // thank-you page (also the Google Ads conversion trigger).
-      // Falls back to the inline message + email client if the POST isn't
-      // accepted (e.g. previewing off-Netlify).
+      // If the POST isn't accepted (e.g. local preview, or Netlify form
+      // detection not yet enabled) we just show the inline confirmation —
+      // a copy is always kept in the admin panel. We never open an email app.
       fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -314,9 +310,9 @@ function initForms() {
       })
         .then(res => {
           if (res.ok) { window.location.href = "/thank-you.html"; }
-          else { showOk(); mailtoFallback(); }
+          else { showOk(); }
         })
-        .catch(() => { showOk(); mailtoFallback(); });
+        .catch(() => { showOk(); });
     });
   });
 }
