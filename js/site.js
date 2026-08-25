@@ -303,14 +303,19 @@ function initForms() {
         window.location.href = `mailto:${CONFIG.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       };
 
-      // Submit to Netlify Forms (AJAX). Falls back to opening the user's
-      // email client if the POST isn't accepted (e.g. previewing off-Netlify).
+      // Submit to Netlify Forms (AJAX), then send the visitor to the
+      // thank-you page (also the Google Ads conversion trigger).
+      // Falls back to the inline message + email client if the POST isn't
+      // accepted (e.g. previewing off-Netlify).
       fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(fd).toString(),
       })
-        .then(res => { showOk(); if (!res.ok) mailtoFallback(); })
+        .then(res => {
+          if (res.ok) { window.location.href = "/thank-you.html"; }
+          else { showOk(); mailtoFallback(); }
+        })
         .catch(() => { showOk(); mailtoFallback(); });
     });
   });
