@@ -397,6 +397,22 @@ function initScrollFx() {
   update();
 }
 
+/* ---------- Google Ads click-to-call conversion ---------- */
+// Fires gtag_report_conversion (defined in each page's <head>) whenever a
+// phone link is clicked — covers header, footer, FAB, contact + area pages,
+// including links injected after load. Falls back to a normal call if the
+// tag isn't available (e.g. blocked), so the phone link never breaks.
+function initCallTracking() {
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest && e.target.closest('a[href^="tel:"]');
+    if (!a) return;
+    if (typeof window.gtag === "function" && typeof window.gtag_report_conversion === "function") {
+      e.preventDefault();
+      window.gtag_report_conversion(a.getAttribute("href"));
+    }
+  });
+}
+
 /* ---------- Boot ---------- */
 document.addEventListener("DOMContentLoaded", () => {
   const h = document.getElementById("site-header-mount");
@@ -411,6 +427,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initMagnetic();
   initBeforeAfter();
   initScrollFx();
+  initCallTracking();
 });
 
 /* re-init interactions after dynamic content injection */
