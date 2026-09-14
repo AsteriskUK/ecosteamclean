@@ -270,6 +270,11 @@ function saveLead(lead) {
     localStorage.setItem(LEADS_KEY, JSON.stringify(leads));
   } catch (e) { /* storage unavailable */ }
 }
+// Enquiries are emailed here via FormSubmit (free, no backend required).
+// One-time activation: the FIRST submission triggers a confirmation email
+// to this address — click the link in it once and all future leads arrive.
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/georgecameron307@gmail.com";
+
 function initForms() {
   document.querySelectorAll("form[data-quote]").forEach(form => {
     form.addEventListener("submit", (ev) => {
@@ -298,15 +303,27 @@ function initForms() {
         form.reset();
       };
 
-      // Submit to Netlify Forms (AJAX), then send the visitor to the
-      // thank-you page (also the Google Ads conversion trigger).
-      // If the POST isn't accepted (e.g. local preview, or Netlify form
-      // detection not yet enabled) we just show the inline confirmation —
+      // Email the enquiry straight to the team via FormSubmit (no server
+      // needed), then send the visitor to the thank-you page (which also
+      // fires the Google Ads conversion). If the POST isn't accepted
+      // (e.g. offline / local preview) we just show the inline confirmation —
       // a copy is always kept in the admin panel. We never open an email app.
-      fetch("/", {
+      const payload = {
+        name: lead.name,
+        phone: lead.phone,
+        email: lead.email,
+        postcode: lead.postcode,
+        service: lead.service,
+        message: lead.message,
+        _subject: data.subject || "New quote request — ecologicscleaning.co.uk",
+        _replyto: lead.email,
+        _template: "table",
+        _captcha: "false",
+      };
+      fetch(FORM_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(fd).toString(),
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(payload),
       })
         .then(res => {
           if (res.ok) { window.location.href = "/thank-you.html"; }
