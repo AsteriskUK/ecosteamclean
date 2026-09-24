@@ -79,10 +79,21 @@ const SERVICES = [
 ];
 
 /* ---------- Areas served (location landing pages) ---------- */
+// Featured areas shown in the header dropdown & footer. The full directory
+// of every town & postcode we cover lives on areas.html (linked as "All areas").
 const AREAS = [
   { slug: "bromsgrove", name: "Bromsgrove", file: "carpet-cleaning-bromsgrove.html" },
   { slug: "birmingham", name: "Birmingham", file: "carpet-cleaning-birmingham.html" },
+  { slug: "nottingham", name: "Nottingham", file: "carpet-cleaning-nottingham.html" },
+  { slug: "leicester", name: "Leicester", file: "carpet-cleaning-leicester.html" },
+  { slug: "west-midlands", name: "West Midlands", file: "carpet-cleaning-west-midlands.html" },
+  { slug: "worcestershire", name: "Worcestershire", file: "carpet-cleaning-worcestershire.html" },
+  { slug: "staffordshire", name: "Staffordshire", file: "carpet-cleaning-staffordshire.html" },
+  { slug: "warwickshire", name: "Warwickshire", file: "carpet-cleaning-warwickshire.html" },
+  { slug: "nottinghamshire", name: "Nottinghamshire", file: "carpet-cleaning-nottinghamshire.html" },
+  { slug: "south-yorkshire", name: "South Yorkshire", file: "carpet-cleaning-south-yorkshire.html" },
 ];
+const AREAS_HUB = "areas.html";
 
 /* ---------- Build header ---------- */
 function buildHeader() {
@@ -92,7 +103,8 @@ function buildHeader() {
   ).join("");
   const areaDrop = AREAS.map(a =>
     `<a href="${P('areas/' + a.file)}"><span class="di">${ICON.pin}</span>Cleaning in ${a.name}</a>`
-  ).join("");
+  ).join("") +
+    `<a href="${P(AREAS_HUB)}"><span class="di">${ICON.arrow}</span>All areas we cover</a>`;
 
   return `
   <div class="topbar">
@@ -123,7 +135,7 @@ function buildHeader() {
             <div class="drop">${svcDrop}</div>
           </li>
           <li class="has-drop">
-            <a href="${P('areas/' + AREAS[0].file)}" class="${active==='areas'?'active':''}">Areas ${ICON.chev}</a>
+            <a href="${P(AREAS_HUB)}" class="${active==='areas'?'active':''}">Areas ${ICON.chev}</a>
             <div class="drop">${areaDrop}</div>
           </li>
           <li><a href="${P('about.html')}" class="${active==='about'?'active':''}">About</a></li>
@@ -144,8 +156,8 @@ function buildHeader() {
     <a class="m-link" href="${P('index.html')}">Home</a>
     <a class="m-link" href="${P('services.html')}">Services</a>
     <div class="m-sub">${SERVICES.map(s=>`<a href="${P('services/'+s.slug+'.html')}">${s.name}</a>`).join("")}</div>
-    <a class="m-link" href="${P('areas/'+AREAS[0].file)}">Areas we cover</a>
-    <div class="m-sub">${AREAS.map(a=>`<a href="${P('areas/'+a.file)}">Cleaning in ${a.name}</a>`).join("")}</div>
+    <a class="m-link" href="${P(AREAS_HUB)}">Areas we cover</a>
+    <div class="m-sub">${AREAS.map(a=>`<a href="${P('areas/'+a.file)}">Cleaning in ${a.name}</a>`).join("")}<a href="${P(AREAS_HUB)}">All areas we cover →</a></div>
     <a class="m-link" href="${P('about.html')}">About</a>
     <a class="m-link" href="${P('blog.html')}">Blog</a>
     <a class="m-link" href="${P('contact.html')}">Contact</a>
@@ -179,6 +191,7 @@ function buildFooter() {
         <div class="footer-col">
           <h4>Areas we cover</h4>
           ${AREAS.map(a => `<a href="${P('areas/' + a.file)}">Cleaning in ${a.name}</a>`).join("")}
+          <a href="${P(AREAS_HUB)}" style="font-weight:700">All areas we cover →</a>
           <h4 style="margin-top:1.4rem">Company</h4>
           <a href="${P('about.html')}">About Us</a>
           <a href="${P('blog.html')}">Blog & Tips</a>
