@@ -9,6 +9,69 @@ const POSTS_KEY = "esc_posts";
 /* ---------- Seed articles ---------- */
 const SEED_POSTS = [
   {
+    slug: "eco-cleaning-myths-costing-you-time-and-money",
+    image: "assets/photos/blog-eco.jpg",
+    title: "5 Eco-Cleaning Myths That Are Actually Costing You Time (and Money)",
+    category: "Eco Cleaning",
+    author: "The Ecologics Team",
+    date: "2026-09-24",
+    read: 6,
+    excerpt: "Does “eco-friendly” really mean “less effective”? Not even close. We bust the five most common green-cleaning myths — including the ones quietly costing you time, money and cleaner results.",
+    body: `
+<p>There's a stubborn idea floating around that "eco-friendly" and "actually effective" don't really go together when it comes to cleaning — that if you want your carpets properly clean, you need something strong, chemical and slightly unpleasant to be around. We hear versions of this a lot, usually from people who are pleasantly surprised once they see what a non-toxic clean actually does.</p>
+<p>So let's go through the most common myths one by one, because a few of them are genuinely costing people time, money, and in some cases cleaner results than they'd get otherwise.</p>
+<h2>Myth 1: "Eco-friendly means it won't really work"</h2>
+<p>This is the big one, and it's easy to understand why people believe it — a lot of budget "green" products on supermarket shelves really are watered down and underwhelming. But that's a product quality issue, not a fundamental limitation of eco-friendly cleaning as a concept.</p>
+<p>Professional steam cleaning is a good example of why this myth doesn't hold up. It uses nothing but heat and water, applied at a high enough temperature to break down dirt, oils and bacteria, followed by powerful extraction that pulls it all back out. There's no chemical shortcut needed, because heat is doing work that a lot of chemical cleaners simply can't match — particularly when it comes to reaching deep into carpet fibres rather than just treating the surface.</p>
+<h2>Myth 2: "Chemical cleaners are more thorough because they're stronger"</h2>
+<p>Strength and thoroughness aren't actually the same thing, and this is where a lot of people get caught out. Harsh chemical cleaners often work by breaking things down on the surface, which can look effective immediately — but they frequently leave a sticky residue behind in the fibres. That residue doesn't just sit there harmlessly; it actually attracts more dirt afterward, which is part of why some carpets seem to get dirty again unusually fast after a chemical clean.</p>
+<p>A proper eco clean, with nothing left behind to attract dirt, often stays cleaner for longer — even though it "felt" gentler at the time.</p>
+<h2>Myth 3: "Green cleaning takes longer, so it's less convenient"</h2>
+<p>For DIY spot-cleaning with natural ingredients like vinegar, this can sometimes be true — a natural approach might take an extra few minutes compared to a spray-and-wipe chemical product. But when it comes to professional cleaning, this myth doesn't really apply. A non-toxic steam clean takes about the same amount of time as any other professional method, and because there's no chemical smell or residue to worry about, you can actually use the room again sooner, not later. Most carpets are dry and back to normal use within a few hours.</p>
+<h2>Myth 4: "It's not safe to eat, sleep or play on carpet cleaned with regular products"</h2>
+<p>This one flips the myth around, but it's worth saying plainly: this is actually true, and it's one of the strongest arguments for going eco-friendly rather than against it. Many chemical carpet treatments recommend keeping children and pets off the area for a set period after cleaning, precisely because of what's been used. A genuinely non-toxic clean doesn't come with that caveat — there's nothing on the carpet that needs time to become "safe" again, because nothing harmful was used in the first place.</p>
+<p>If you've got young kids who treat the living room floor as a second home, or pets who are going to be back on the carpet within the hour regardless of what you tell them, this difference matters more than most people realise until they think it through.</p>
+<h2>Myth 5: "You have to choose between eco-friendly and getting your deposit back"</h2>
+<p>This comes up a lot with end-of-tenancy cleans specifically — the worry that a gentler approach won't be thorough enough to satisfy a landlord or letting agent. In practice, it's the opposite. A non-toxic deep clean genuinely lifts dirt and odours from deep within the fibres, which is exactly what inspections are checking for. The "gentle" part refers to what's used, not how effective the result is.</p>
+<blockquote>The lack of chemical residue, the shorter safe-to-use window, and the fact that heat alone does most of the heavy lifting all add up to a clean that's kinder to your home and family — and genuinely effective too.</blockquote>
+<h2>The actual takeaway</h2>
+<p>Eco-friendly cleaning has picked up a reputation, fairly or not, for being the compromise option — good for the planet, maybe, but a step down in results. In our experience, that's backwards. If you've been putting off a proper deep clean because you assumed you'd have to choose between "eco" and "thorough," that's exactly the myth worth letting go of.</p>
+<p>Ready to see the difference for yourself? <a class="inline" href="../contact.html">Get a free, no-obligation quote</a> or learn more <a class="inline" href="../about.html">about our eco approach</a>.</p>`
+  },
+  {
+    slug: "why-your-curtains-need-cleaning-too",
+    image: "assets/photos/svc-curtain-mattress-cleaning.jpg",
+    title: "The Cleaning Job Everyone Forgets: Why Your Curtains Need Attention Too",
+    category: "Curtain Care",
+    author: "The Ecologics Team",
+    date: "2026-09-10",
+    read: 6,
+    excerpt: "Carpets get vacuumed and sofas get a hoover-over — but when did you last clean your curtains? They're one of the biggest fabric surfaces in the room, and a surprising dust and allergen trap.",
+    body: `
+<p>Quick honesty check: carpets get vacuumed, sofas get a hoover-over now and then, windows get a wipe when they look grubby. Curtains? They hang there, doing their job quietly, and most people genuinely can't remember the last time they gave them a proper clean. If that's you, don't worry — you're in the majority, not the exception.</p>
+<p>The thing is, curtains are actually one of the biggest fabric surfaces in most rooms, and they're working harder than people realise.</p>
+<h2>What curtains are actually doing all day</h2>
+<p>Think about what a curtain is exposed to that most other fabric in your home isn't. They hang directly in the path of a window that opens regularly, meaning outdoor air — with all the dust, pollen and pollutants that come with it — passes straight through them constantly. They sit in direct sunlight for hours at a time, which fades fabric and can make certain fibres more brittle over the years. And because they're rarely moved or disturbed, dust simply settles into them, layer by layer, largely undisturbed for months.</p>
+<p>Add in cooking smells drifting through from the kitchen, smoke if anyone in the household smokes, and pet hair if you've got animals who like to sit near the window, and curtains end up as a genuine dust and allergen reservoir — one that's easy to overlook precisely because they don't get walked on or sat on the way carpets and sofas do.</p>
+<h2>Why this matters more than it might seem</h2>
+<p>If anyone in the house deals with allergies or asthma, curtains are worth paying real attention to. Because they hang directly in an airflow path — catching the breeze every time a window opens — any dust or allergens trapped in the fabric get stirred back into the room's air more readily than dust sitting still in a carpet. A curtain that hasn't been cleaned in a year or more can genuinely be contributing to stuffiness or allergy symptoms in a room that otherwise looks spotless.</p>
+<p>There's also a simple practical reason: curtains are one of the largest fabric surfaces in a room, which means they hold a proportionally large share of whatever's circulating through the air of that space.</p>
+<h2>How often is actually reasonable</h2>
+<ul class="bul">
+  <li><strong>Living rooms and bedrooms</strong> — every 6 to 12 months for a proper clean, more often if anyone smokes or you've got pets.</li>
+  <li><strong>Kitchens</strong> — every 3 to 6 months, given the extra exposure to cooking residue and grease in the air.</li>
+  <li><strong>Rooms with heavy sun exposure</strong> — worth checking more regularly for fading and fabric wear, even if dust isn't an obvious issue.</li>
+</ul>
+<p>Between full cleans, a gentle vacuum with a soft brush attachment, or simply giving curtains a firm shake outdoors now and then, helps keep loose dust from settling in too deeply.</p>
+<h2>Why DIY washing isn't always the answer</h2>
+<p>A lot of curtains technically can be machine washed, but it's worth checking the care label carefully before you do, because plenty of heavier or lined curtains aren't designed for it — washing machines can distort the shape, damage linings, or cause shrinkage that a home wash won't recover from. Even for curtains that are machine-washable, getting them properly dry without creasing or misshaping them at home isn't always straightforward, particularly with longer or heavier fabric.</p>
+<p>Professional cleaning avoids all of that risk while still reaching the deep-set dust that a home wash or a vacuum brush genuinely can't shift on its own.</p>
+<blockquote>If you're already having carpets or upholstery professionally cleaned, curtains are a natural add-on rather than a separate job to schedule and think about later.</blockquote>
+<h2>The easy win</h2>
+<p>It's one of those tasks that's easy to keep putting off indefinitely simply because nothing about a slightly dusty curtain screams "urgent" — right up until someone points out how long it's actually been. If it's been a while (and be honest, it probably has), it's worth adding to the list next time you book anything else in.</p>
+<p>We clean curtains on-site as part of our <a class="inline" href="../services/curtain-mattress-cleaning.html">curtain &amp; mattress cleaning service</a>. <a class="inline" href="../contact.html">Get a free quote</a> and add it to your next booking.</p>`
+  },
+  {
     slug: "how-often-should-you-clean-your-carpets",
     image: "assets/photos/hero.jpg",
     title: "How Often Should You Really Clean Your Carpets?",
@@ -196,7 +259,7 @@ function fmtDate(iso) {
 const POST_ICONS = {
   "Carpet Care": "rug", "Stain Removal": "spray", "Eco Cleaning": "leaf",
   "End of Tenancy": "key", "Upholstery": "sofa", "Commercial": "building",
-  "Deep Cleaning": "home", "Rug Cleaning": "sparkle",
+  "Deep Cleaning": "home", "Rug Cleaning": "sparkle", "Curtain Care": "bed",
 };
 function iconFor(cat) { return (window.ESC && window.ESC.ICON[POST_ICONS[cat] || "leaf"]) || ""; }
 
