@@ -292,6 +292,25 @@ function initForms() {
   document.querySelectorAll("form[data-quote]").forEach(form => {
     form.addEventListener("submit", (ev) => {
       ev.preventDefault();
+
+      // Spam honeypot: if the hidden bot-field is filled, silently drop it.
+      if ((form.querySelector('[name="bot-field"]') || {}).value) return;
+
+      // Enforce required fields. The form carries `novalidate` (so we can
+      // control the UX), which means native validation does NOT run on its
+      // own — we must trigger it here, or empty forms get submitted.
+      const required = ["name", "phone", "email"];
+      for (const fieldName of required) {
+        const el = form.querySelector(`[name="${fieldName}"]`);
+        if (el && !el.value.trim()) {
+          el.value = el.value.trim();
+          form.reportValidity();
+          el.focus();
+          return;
+        }
+      }
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
       const fd = new FormData(form);
       const data = Object.fromEntries(fd.entries());
       const lead = {
