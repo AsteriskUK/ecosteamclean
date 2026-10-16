@@ -286,7 +286,7 @@ function saveLead(lead) {
 // Enquiries are emailed here via FormSubmit (free, no backend required).
 // One-time activation: the FIRST submission triggers a confirmation email
 // to this address — click the link in it once and all future leads arrive.
-const FORM_ENDPOINT = "https://formsubmit.co/ajax/georgecameron307@gmail.com";
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/ecosteamclean1@gmail.com";
 
 function initForms() {
   document.querySelectorAll("form[data-quote]").forEach(form => {
