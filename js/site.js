@@ -358,7 +358,7 @@ function initForms() {
         body: JSON.stringify(payload),
       })
         .then(res => {
-          if (res.ok) { window.location.href = "/thank-you.html"; }
+          if (res.ok) { try { sessionStorage.setItem("esc_lead", "1"); } catch (e) {} window.location.href = "/thank-you.html"; }
           else { showOk(); }
         })
         .catch(() => { showOk(); });

@@ -12,6 +12,17 @@
   gtag('config', 'G-NCL7JRF172');
   gtag('config', 'AW-18438463583');
 </script>
+<!-- Submit lead form conversion — fires only after a genuine form submission (flag set in site.js on redirect) -->
+<script>
+  (function () {
+    try {
+      if (sessionStorage.getItem('esc_lead') === '1') {
+        sessionStorage.removeItem('esc_lead');
+        gtag('event', 'conversion', {'send_to': 'AW-18438463583/XjLLCN_rxKEdEN_AkthE'});
+      }
+    } catch (e) {}
+  })();
+</script>
 <!-- Event snippet for Click-to-call conversion -->
 <script>
 function gtag_report_conversion(url) {
@@ -35,7 +46,6 @@ function gtag_report_conversion(url) {
 <title>Thank You — Ecologics Cleaning</title>
 <meta name="description" content="Thanks for your enquiry — the Ecologics Cleaning team will be in touch shortly with your free quote.">
 <link rel="canonical" href="https://ecologicscleaning.co.uk/thank-you.html">
-<meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:site_name" content="Ecologics Cleaning">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_GB">
