@@ -333,7 +333,7 @@ function gtag_report_conversion(url) {
     <div class="stats" data-reveal>
       <div class="stat"><div class="n"><span data-count="2000" data-suffix="+">2,000+</span></div><div class="l">Homes cleaned</div></div>
       <div class="stat"><div class="n"><span data-count="10" data-suffix="+">10+</span></div><div class="l">Years experience</div></div>
-      <div class="stat"><div class="n"><span data-count="5" data-decimals="1">5.0</span>★</div><div class="l">Google rating · 64 reviews</div></div>
+      <div class="stat"><div class="n"><span data-count="5" data-decimals="1">5.0</span>★</div><div class="l">Google rating · 64+ reviews</div></div>
       <div class="stat"><div class="n"><span data-count="100" data-suffix="%">100%</span></div><div class="l">Eco-friendly</div></div>
     </div>
   </div>
@@ -384,40 +384,14 @@ function gtag_report_conversion(url) {
     <div class="section-head" data-reveal>
       <span class="kicker">Loved by locals</span>
       <h2 class="h-lg mt-2"><span class="accent">Earned</span> one clean at a time.</h2>
-      <p class="lead mt-2">Rated <strong id="gr-rating">excellent</strong> across <strong id="gr-count">64+</strong> verified Google reviews — the live rating and latest reviews below come straight from Google.</p>
-      <div class="mt-3">
-        <a class="btn btn-outline" href="https://www.google.com/maps/place/ECOLOGICS+CLEANING+SOLUTIONS+LIMITED/@52.80828,-1.1526073,17z/data=!4m2!3m1!1s0x6406b03eb68a8ced:0x8281e50b4489d42a" target="_blank" rel="noopener">See all reviews on Google ↗</a>
-      </div>
+      <p class="lead mt-2">Rated <strong id="gr-rating">5.0 out of 5</strong> across <strong id="gr-count">64+</strong> verified Google reviews — the rating and latest reviews below come straight from Google.</p>
     </div>
-    <!-- Live Google reviews (Trustindex widget) -->
-    <div class="reviews-widget">
-      <script defer async src='https://cdn.trustindex.io/loader.js?de1cd7b83533832517964fa484d'></script>
-    </div>
-    <!-- Pull the live rating word + review count from the widget into the heading above (no hardcoded numbers) -->
-    <script>
-    (function(){
-      var ratingEl = document.getElementById('gr-rating');
-      var countEl = document.getElementById('gr-count');
-      if(!ratingEl && !countEl) return;
-      var tries = 0, max = 60; // ~30s
-      var timer = setInterval(function(){
-        tries++;
-        var wrap = document.querySelector('.reviews-widget');
-        var done = false;
-        if(wrap && wrap.innerText && wrap.innerText.trim().length > 10){
-          var text = wrap.innerText;
-          var m = text.match(/Based on\s+([\d,]+)\s+review/i);
-          if(m && countEl){ countEl.textContent = m[1]; done = true; }
-          var rateNode = wrap.querySelector('.ti-rating-large');
-          if(rateNode && ratingEl){
-            var r = (rateNode.textContent || '').trim();
-            if(r){ ratingEl.textContent = r.toLowerCase(); }
-          }
-        }
-        if(done || tries >= max){ clearInterval(timer); }
-      }, 500);
-    })();
-    </script>
+    <!-- Live Google reviews: js/reviews.js reads /api/reviews (Netlify function -> Google Places API) -->
+    <div id="gReviews" class="g-reviews" data-gmaps="https://www.google.com/maps/place/ECOLOGICS+CLEANING+SOLUTIONS+LIMITED/@52.80828,-1.1526073,17z/data=!4m2!3m1!1s0x6406b03eb68a8ced:0x8281e50b4489d42a"><!--prerender:gReviews--><div class="gr-summary"><span class="gr-g"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="#4285F4" d="M23 12.27c0-.8-.07-1.56-.2-2.3H12v4.35h6.17a5.27 5.27 0 0 1-2.29 3.46v2.87h3.7c2.17-2 3.42-4.94 3.42-8.38z"></path><path fill="#34A853" d="M12 23c3.1 0 5.7-1.03 7.58-2.8l-3.7-2.87c-1.03.69-2.35 1.1-3.88 1.1-2.98 0-5.5-2.01-6.4-4.72H1.78v2.96A11 11 0 0 0 12 23z"></path><path fill="#FBBC05" d="M5.6 13.71a6.6 6.6 0 0 1 0-4.2V6.55H1.78a11 11 0 0 0 0 9.9l3.82-2.74z"></path><path fill="#EA4335" d="M12 5.58c1.69 0 3.2.58 4.39 1.72l3.29-3.29C17.7 2.15 15.1 1 12 1A11 11 0 0 0 1.78 6.55L5.6 9.5C6.5 6.8 9.02 5.58 12 5.58z"></path></svg> Google</span>
+      <span class="gr-score">5.0</span><span class="gr-stars" aria-label="5.0 out of 5 stars">★★★★★</span>
+      <span class="gr-based">Based on 64+ Google reviews</span>
+      <a class="btn btn-outline btn-sm" href="https://www.google.com/maps/place/ECOLOGICS+CLEANING+SOLUTIONS+LIMITED/@52.80828,-1.1526073,17z/data=!4m2!3m1!1s0x6406b03eb68a8ced:0x8281e50b4489d42a" target="_blank" rel="noopener">Read all reviews on Google ↗</a></div><!--/prerender:gReviews--></div>
+    <script src="js/reviews.js"></script>
   </div>
 </section>
 

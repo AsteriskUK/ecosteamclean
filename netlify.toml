@@ -3,6 +3,9 @@
 [build]
   publish = "."
 
+[functions]
+  directory = "netlify/functions"
+
 # Production security headers (not possible on GitHub Pages)
 [[headers]]
   for = "/*"

@@ -565,3 +565,20 @@ body.nav-open .overlay { opacity: 1; visibility: visible; }
 .cookie-banner a { color: var(--moss, #3f8f37); font-weight: 600; text-decoration: underline; }
 .cookie-actions { display: flex; gap: .6rem; }
 .cookie-actions .btn { padding: .6rem 1.1rem; font-size: .92rem; }
+
+/* Google reviews block */
+.g-reviews { margin-top: 2rem; }
+.gr-summary { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .6rem 1.1rem; background: #fff; border: 1px solid var(--line, #dfe6db); border-radius: 18px; padding: 1rem 1.4rem; max-width: 860px; margin: 0 auto; }
+.gr-g { display: inline-flex; align-items: center; gap: .4rem; font-weight: 600; color: #3c4043; font-size: .95rem; }
+.gr-score { font-family: var(--display, inherit); font-weight: 800; font-size: 2rem; color: var(--forest, #0a2f54); line-height: 1; }
+.gr-stars { color: #f5a623; letter-spacing: 2px; font-size: 1.1rem; }
+.gr-based { color: var(--ink-3, #5a6b7b); font-size: .95rem; }
+.gr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top: 1.2rem; }
+.gr-card { background: #fff; border: 1px solid var(--line, #dfe6db); border-radius: 18px; padding: 1.2rem 1.3rem; display: flex; flex-direction: column; gap: .6rem; }
+.gr-card p { margin: 0; font-size: .95rem; line-height: 1.55; color: var(--ink-2, #2b3e50); }
+.gr-head { display: flex; align-items: center; gap: .7rem; }
+.gr-head img { border-radius: 50%; width: 40px; height: 40px; object-fit: cover; }
+.gr-head > div { flex: 1; display: flex; flex-direction: column; line-height: 1.25; }
+.gr-head small { color: var(--ink-3, #5a6b7b); }
+.gr-head a { color: inherit; text-decoration: none; }
+.gr-attr { text-align: center; color: var(--ink-3, #5a6b7b); font-size: .82rem; margin-top: .9rem; }
