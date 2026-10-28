@@ -287,7 +287,7 @@ function renderBlogList(mountId, limit) {
         <div class="post-meta"><span>${fmtDate(p.date)}</span><span>${p.read || 5} min read</span></div>
         <h3><a href="${postUrl(p, P)}">${p.title}</a></h3>
         <p>${p.excerpt}</p>
-        <a class="svc-link" href="${postUrl(p, P)}">Read article ${window.ESC.ICON.arrow}</a>
+        <span class="svc-link" aria-hidden="true">Read article ${window.ESC.ICON.arrow}</span>
       </div>
     </article>`).join("");
   // re-init reveal for freshly added nodes
@@ -308,7 +308,7 @@ function renderSinglePost(mountId) {
       <p class="lead mt-2">That post may have moved. <a class="inline" href="${P('blog.html')}">Back to the blog</a>.</p></div>`;
     return;
   }
-  document.title = `${post.title} — Ecologics Cleaning`;
+  if (!document.body.getAttribute("data-slug")) document.title = `${post.title} — Ecologics Cleaning`;
 
   // related
   const related = getAllPosts().filter(p => p.slug !== post.slug).slice(0, 3);

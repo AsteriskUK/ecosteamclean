@@ -557,3 +557,11 @@ body.nav-open .overlay { opacity: 1; visibility: visible; }
   [data-reveal] { opacity: 1 !important; transform: none !important; }
   .marquee-track { animation: none !important; }
 }
+
+
+/* Cookie consent banner */
+.cookie-banner { position: fixed; left: 1rem; right: 1rem; bottom: 1rem; z-index: 9999; max-width: 760px; margin-inline: auto; background: #fff; color: var(--ink, #12263a); border: 1px solid var(--line, #dfe6db); border-radius: 16px; box-shadow: 0 18px 50px -12px rgba(10,47,84,.35); padding: 1rem 1.2rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+.cookie-banner p { flex: 1 1 320px; margin: 0; font-size: .92rem; line-height: 1.5; }
+.cookie-banner a { color: var(--moss, #3f8f37); font-weight: 600; text-decoration: underline; }
+.cookie-actions { display: flex; gap: .6rem; }
+.cookie-actions .btn { padding: .6rem 1.1rem; font-size: .92rem; }

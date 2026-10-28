@@ -9,9 +9,18 @@ const esc = (x) => x.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g
 mkdirSync(new URL("../blog/", import.meta.url), { recursive: true });
 for (const p of posts) {
   const url = `${BASE}/blog/${p.slug}.html`, img = `${BASE}/${p.image}`;
-  const title = `${p.title} — Ecologics Cleaning`;
+  // Keep <title> within ~60 chars so Google doesn't truncate it; the on-page H1 keeps the full headline.
+  const SEO_TITLES = {
+    "why-your-curtains-need-cleaning-too": "Why Your Curtains Need Cleaning Too | Ecologics Cleaning",
+    "end-of-tenancy-cleaning-checklist": "End of Tenancy Cleaning Checklist | Ecologics Cleaning",
+    "eco-cleaning-myths-costing-you-time-and-money": "5 Eco-Cleaning Myths Costing You Time & Money",
+  };
+  const full = `${p.title} — Ecologics Cleaning`;
+  const title = SEO_TITLES[p.slug] || (full.length <= 60 ? full : p.title);
+  const clip = (t) => { if (t.length <= 160) return t; const cut = t.slice(0, 157); const sent = cut.lastIndexOf(". "); return sent > 90 ? cut.slice(0, sent + 1) : cut.slice(0, cut.lastIndexOf(" ")) + "…"; };
+  const desc = clip(p.excerpt);
   const ld = [
-    { "@context": "https://schema.org", "@type": "Article", headline: p.title, description: p.excerpt, image: img, datePublished: p.date, dateModified: p.date, mainEntityOfPage: url,
+    { "@context": "https://schema.org", "@type": "Article", headline: p.title, description: desc, image: img, datePublished: p.date, dateModified: p.date, mainEntityOfPage: url,
       author: { "@type": "Organization", name: "Ecologics Cleaning", url: BASE + "/" },
       publisher: { "@type": "Organization", name: "Ecologics Cleaning", url: BASE + "/", logo: { "@type": "ImageObject", url: BASE + "/assets/favicon.png" } } },
     { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
@@ -24,19 +33,19 @@ for (const p of posts) {
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_GB">
 <meta property="og:title" content="${esc(title)}">
-<meta property="og:description" content="${esc(p.excerpt)}">
+<meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${url}">
 <meta property="og:image" content="${img}">
 <meta property="article:published_time" content="${p.date}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(title)}">
-<meta name="twitter:description" content="${esc(p.excerpt)}">
+<meta name="twitter:description" content="${esc(desc)}">
 <meta name="twitter:image" content="${img}">
 <script type="application/ld+json">${JSON.stringify(ld)}</script>
 `;
   let h = tpl
     .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`)
-    .replace(/<meta name="description"[^>]*>/, `<meta name="description" content="${esc(p.excerpt)}">`)
+    .replace(/<meta name="description"[^>]*>/, `<meta name="description" content="${esc(desc)}">`)
     .replace('<link rel="preconnect" href="https://fonts.googleapis.com">', head + '<link rel="preconnect" href="https://fonts.googleapis.com">')
     .replace('href="css/', 'href="../css/').replace('src="js/site.js"', 'src="../js/site.js"').replace('src="js/blog.js"', 'src="../js/blog.js"')
     .replace('data-root=""', `data-root="../" data-slug="${p.slug}"`);

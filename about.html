@@ -1,6 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
+<!-- Google Consent Mode v2: tracking is denied until the visitor chooses (see js/site.js, cookies.html) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied','wait_for_update':500});
+  try { if (localStorage.getItem('esc_consent') === 'granted') gtag('consent', 'update', {'ad_storage':'granted','ad_user_data':'granted','ad_personalization':'granted','analytics_storage':'granted'}); } catch (e) {}
+</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18399111165"></script>
 <script>
@@ -32,20 +39,20 @@ function gtag_report_conversion(url) {
 </script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About Us — Ecologics Cleaning</title>
-<meta name="description" content="Ecologics Cleaning is a family-run, eco-friendly cleaning company delivering non-toxic steam carpet, upholstery and deep cleaning across Bromsgrove, Birmingham & the West Midlands.">
+<title>About Ecologics Cleaning | Bromsgrove Carpet Cleaners</title>
+<meta name="description" content="Ecologics Cleaning is a Bromsgrove carpet and upholstery cleaning company using eco-friendly, non-toxic steam cleaning across Birmingham and the West Midlands.">
 <link rel="canonical" href="https://ecologicscleaning.co.uk/about.html">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:site_name" content="Ecologics Cleaning">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_GB">
-<meta property="og:title" content="About Us — Ecologics Cleaning">
-<meta property="og:description" content="Ecologics Cleaning is a family-run, eco-friendly cleaning company delivering non-toxic steam carpet, upholstery and deep cleaning across Bromsgrove, Birmingham &amp; the West Midlands.">
+<meta property="og:title" content="About Ecologics Cleaning | Bromsgrove Carpet Cleaners">
+<meta property="og:description" content="Ecologics Cleaning is a Bromsgrove carpet and upholstery cleaning company using eco-friendly, non-toxic steam cleaning across Birmingham and the West Midlands.">
 <meta property="og:url" content="https://ecologicscleaning.co.uk/about.html">
 <meta property="og:image" content="https://ecologicscleaning.co.uk/assets/photos/hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="About Us — Ecologics Cleaning">
-<meta name="twitter:description" content="Ecologics Cleaning is a family-run, eco-friendly cleaning company delivering non-toxic steam carpet, upholstery and deep cleaning across Bromsgrove, Birmingham &amp; the West Midlands.">
+<meta name="twitter:title" content="About Ecologics Cleaning | Bromsgrove Carpet Cleaners">
+<meta name="twitter:description" content="Ecologics Cleaning is a Bromsgrove carpet and upholstery cleaning company using eco-friendly, non-toxic steam cleaning across Birmingham and the West Midlands.">
 <meta name="twitter:image" content="https://ecologicscleaning.co.uk/assets/photos/hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -222,6 +229,8 @@ function gtag_report_conversion(url) {
         <span>© 2026 Ecologics Cleaning. All rights reserved.</span>
         <span style="display:flex;gap:1.2rem;flex-wrap:wrap">
           <a href="privacy.html">Privacy Policy</a>
+          <a href="cookies.html">Cookie Policy</a>
+          <a href="#" data-cookie-settings="">Cookie settings</a>
           <a href="terms.html">Terms</a>
           <a href="#">Fully insured · DBS-checked team</a>
         </span>

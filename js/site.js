@@ -213,6 +213,8 @@ function buildFooter() {
         <span>© ${y} ${CONFIG.brand}. All rights reserved.</span>
         <span style="display:flex;gap:1.2rem;flex-wrap:wrap">
           <a href="${P('privacy.html')}">Privacy Policy</a>
+          <a href="${P('cookies.html')}">Cookie Policy</a>
+          <a href="#" data-cookie-settings>Cookie settings</a>
           <a href="${P('terms.html')}">Terms</a>
           <a href="#">Fully insured · DBS-checked team</a>
         </span>
@@ -462,6 +464,36 @@ function initCallTracking() {
   });
 }
 
+/* ---------- Cookie consent (Google Consent Mode v2) ---------- */
+const CONSENT_KEY = "esc_consent";
+function setConsent(granted) {
+  const v = granted ? "granted" : "denied";
+  try { localStorage.setItem(CONSENT_KEY, v); } catch (e) {}
+  if (typeof window.gtag === "function") {
+    window.gtag("consent", "update", { ad_storage: v, ad_user_data: v, ad_personalization: v, analytics_storage: v });
+  }
+}
+function showCookieBanner() {
+  if (document.getElementById("cookieBanner")) return;
+  const b = document.createElement("div");
+  b.id = "cookieBanner"; b.className = "cookie-banner"; b.setAttribute("role", "dialog"); b.setAttribute("aria-label", "Cookie consent");
+  b.innerHTML = `<p>We use cookies to understand how visitors use our site and to measure our advertising. You can accept or reject them — the site works either way. <a href="${P('cookies.html')}">Cookie policy</a></p>
+    <div class="cookie-actions"><button type="button" class="btn btn-ghost" data-consent="reject">Reject</button><button type="button" class="btn btn-primary" data-consent="accept">Accept</button></div>`;
+  b.addEventListener("click", (e) => {
+    const t = e.target.closest("[data-consent]"); if (!t) return;
+    setConsent(t.getAttribute("data-consent") === "accept"); b.remove();
+  });
+  document.body.appendChild(b);
+}
+function initConsent() {
+  let saved = null; try { saved = localStorage.getItem(CONSENT_KEY); } catch (e) {}
+  if (!saved) showCookieBanner();
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest && e.target.closest("[data-cookie-settings]");
+    if (a) { e.preventDefault(); showCookieBanner(); }
+  });
+}
+
 /* ---------- Boot ---------- */
 document.addEventListener("DOMContentLoaded", () => {
   const h = document.getElementById("site-header-mount");
@@ -477,6 +509,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initBeforeAfter();
   initScrollFx();
   initCallTracking();
+  initConsent();
 });
 
 /* re-init interactions after dynamic content injection */
