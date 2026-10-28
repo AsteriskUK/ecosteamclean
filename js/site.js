@@ -195,6 +195,7 @@ function buildFooter() {
           <h4 style="margin-top:1.4rem">Company</h4>
           <a href="${P('about.html')}">About Us</a>
           <a href="${P('blog.html')}">Blog & Tips</a>
+          <a href="${P('reviews.html')}">Customer Reviews</a>
           <a href="${P('contact.html')}">Contact</a>
           <a href="${P('admin.html')}">Admin</a>
         </div>

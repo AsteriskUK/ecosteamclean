@@ -582,3 +582,9 @@ body.nav-open .overlay { opacity: 1; visibility: visible; }
 .gr-head small { color: var(--ink-3, #5a6b7b); }
 .gr-head a { color: inherit; text-decoration: none; }
 .gr-attr { text-align: center; color: var(--ink-3, #5a6b7b); font-size: .82rem; margin-top: .9rem; }
+
+.gr-av { width: 40px; height: 40px; border-radius: 50%; background: var(--forest, #0a2f54); color: #fff; display: grid; place-items: center; font-weight: 700; flex: none; }
+.gr-text p + p { margin-top: .6rem; }
+.gr-card .gr-text { font-size: .95rem; line-height: 1.55; color: var(--ink-2, #2b3e50); }
+.gr-card .gr-text p { margin: 0; }
+.g-reviews.compact .gr-text { display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; overflow: hidden; }
