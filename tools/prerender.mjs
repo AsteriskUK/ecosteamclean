@@ -21,7 +21,7 @@ const strip = (html) => html.replace(MARK, "");
 function listPages() {
   const out = [];
   for (const f of readdirSync(ROOT)) if (f.endsWith(".html") && !SKIP.has(f)) out.push(f);
-  for (const d of ["services", "areas"]) for (const f of readdirSync(join(ROOT, d))) if (f.endsWith(".html")) out.push(`${d}/${f}`);
+  for (const d of ["services", "areas", "blog"]) for (const f of readdirSync(join(ROOT, d))) if (f.endsWith(".html")) out.push(`${d}/${f}`);
   return out;
 }
 

@@ -249,6 +249,13 @@ function getAllPosts() {
   const seedFiltered = SEED_POSTS.filter(sp => !admin.some(ap => ap.slug === sp.slug));
   return [...admin, ...seedFiltered].sort((a, b) => new Date(b.date) - new Date(a.date));
 }
+/* Seed posts have their own static pages (blog/<slug>.html) so search & AI can index them;
+   posts created in the admin CMS still open via post.html?id=<slug>. */
+function postUrl(p, P) {
+  return SEED_POSTS.some(sp => sp.slug === p.slug)
+    ? P("blog/" + p.slug + ".html")
+    : P("post.html") + "?id=" + encodeURIComponent(p.slug);
+}
 function getPostBySlug(slug) { return getAllPosts().find(p => p.slug === slug); }
 
 function fmtDate(iso) {
@@ -272,15 +279,15 @@ function renderBlogList(mountId, limit) {
   const P = (window.ESC && window.ESC.P) || (x => x);
   mount.innerHTML = posts.map((p, i) => `
     <article class="post-card" data-reveal>
-      <a href="${P('post.html')}?id=${encodeURIComponent(p.slug)}" class="post-thumb" aria-label="${p.title}">
+      <a href="${postUrl(p, P)}" class="post-thumb" aria-label="${p.title}">
         <span class="cat">${p.category}</span>
         ${p.image ? `<img class="photo" src="${P(p.image)}" alt="${p.title}" loading="lazy">` : iconFor(p.category)}
       </a>
       <div class="post-body">
         <div class="post-meta"><span>${fmtDate(p.date)}</span><span>${p.read || 5} min read</span></div>
-        <h3><a href="${P('post.html')}?id=${encodeURIComponent(p.slug)}">${p.title}</a></h3>
+        <h3><a href="${postUrl(p, P)}">${p.title}</a></h3>
         <p>${p.excerpt}</p>
-        <a class="svc-link" href="${P('post.html')}?id=${encodeURIComponent(p.slug)}">Read article ${window.ESC.ICON.arrow}</a>
+        <a class="svc-link" href="${postUrl(p, P)}">Read article ${window.ESC.ICON.arrow}</a>
       </div>
     </article>`).join("");
   // re-init reveal for freshly added nodes
@@ -292,7 +299,7 @@ function renderSinglePost(mountId) {
   const mount = document.getElementById(mountId);
   if (!mount) return;
   const params = new URLSearchParams(location.search);
-  const slug = params.get("id");
+  const slug = params.get("id") || document.body.getAttribute("data-slug");
   const post = slug && getPostBySlug(slug);
   const P = (window.ESC && window.ESC.P) || (x => x);
 
@@ -307,10 +314,10 @@ function renderSinglePost(mountId) {
   const related = getAllPosts().filter(p => p.slug !== post.slug).slice(0, 3);
   const relHtml = related.map(p => `
     <article class="post-card" data-reveal>
-      <a href="${P('post.html')}?id=${encodeURIComponent(p.slug)}" class="post-thumb"><span class="cat">${p.category}</span>${p.image ? `<img class="photo" src="${P(p.image)}" alt="${p.title}" loading="lazy">` : iconFor(p.category)}</a>
+      <a href="${postUrl(p, P)}" class="post-thumb"><span class="cat">${p.category}</span>${p.image ? `<img class="photo" src="${P(p.image)}" alt="${p.title}" loading="lazy">` : iconFor(p.category)}</a>
       <div class="post-body">
         <div class="post-meta"><span>${fmtDate(p.date)}</span><span>${p.read||5} min read</span></div>
-        <h3><a href="${P('post.html')}?id=${encodeURIComponent(p.slug)}">${p.title}</a></h3>
+        <h3><a href="${postUrl(p, P)}">${p.title}</a></h3>
       </div>
     </article>`).join("");
 
