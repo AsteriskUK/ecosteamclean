@@ -156,7 +156,6 @@ function renderServiceDetail() {
   const mount = document.getElementById("service-mount");
   if (!d || !mount) return;
   const I = window.ESC.ICON;
-  document.title = `${d.title} — Ecologics Cleaning`;
 
   const otherServices = window.ESC.SERVICES.filter(s => s.slug !== slug).slice(0, 3);
 
