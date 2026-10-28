@@ -268,8 +268,10 @@ function initCounters() {
       if (!e.isIntersecting) return;
       const el = e.target, target = parseFloat(el.getAttribute("data-count"));
       const suffix = el.getAttribute("data-suffix") || "";
+      const dec = parseInt(el.getAttribute("data-decimals") || "0", 10);
+      const fmt = (n) => dec ? n.toFixed(dec) : Math.floor(n).toLocaleString();
       let cur = 0; const step = target / 45;
-      const tick = () => { cur += step; if (cur >= target) { el.textContent = target.toLocaleString() + suffix; } else { el.textContent = Math.floor(cur).toLocaleString() + suffix; requestAnimationFrame(tick); } };
+      const tick = () => { cur += step; if (cur >= target) { el.textContent = fmt(target) + suffix; } else { el.textContent = fmt(cur) + suffix; requestAnimationFrame(tick); } };
       tick(); io.unobserve(el);
     });
   }, { threshold: 0.5 });

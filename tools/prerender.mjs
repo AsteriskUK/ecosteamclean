@@ -89,7 +89,8 @@ const EXTRACT = `(async () => {
 function fillCounters(html) {
   return html.replace(/(<span[^>]*\bdata-count="([\d.]+)"([^>]*)>)0(<\/span>)/g, (m, open, n, rest, close) => {
     const suffix = (open.match(/data-suffix="([^"]*)"/) || [])[1] || "";
-    return open + parseFloat(n).toLocaleString("en-GB") + suffix + close;
+    const dec = parseInt((open.match(/data-decimals="(\d+)"/) || [])[1] || "0", 10);
+    return open + (dec ? parseFloat(n).toFixed(dec) : parseFloat(n).toLocaleString("en-GB")) + suffix + close;
   });
 }
 
