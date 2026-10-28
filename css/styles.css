@@ -588,3 +588,5 @@ body.nav-open .overlay { opacity: 1; visibility: visible; }
 .gr-card .gr-text { font-size: .95rem; line-height: 1.55; color: var(--ink-2, #2b3e50); }
 .gr-card .gr-text p { margin: 0; }
 .g-reviews.compact .gr-text { display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; overflow: hidden; }
+.gr-summary .btn { padding: .55rem 1.1rem; font-size: .9rem; }
+.gr-summary .btn-outline { color: var(--forest, #0a2f54); border: 1.5px solid var(--forest, #0a2f54); background: #fff; }
