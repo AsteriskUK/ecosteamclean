@@ -590,3 +590,12 @@ body.nav-open .overlay { opacity: 1; visibility: visible; }
 .g-reviews.compact .gr-text { display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; overflow: hidden; }
 .gr-summary .btn { padding: .55rem 1.1rem; font-size: .9rem; }
 .gr-summary .btn-outline { color: var(--forest, #0a2f54); border: 1.5px solid var(--forest, #0a2f54); background: #fff; }
+
+/* Keep the call/WhatsApp buttons reachable above the cookie banner, and make the banner compact on phones */
+.fab { z-index: 10000; }
+@media (max-width: 640px) {
+  .cookie-banner { left: .5rem; right: 4.6rem; bottom: .5rem; padding: .7rem .8rem; gap: .5rem; border-radius: 14px; }
+  .cookie-banner p { flex-basis: 100%; font-size: .8rem; line-height: 1.4; }
+  .cookie-actions { width: 100%; }
+  .cookie-actions .btn { flex: 1; padding: .5rem .8rem; }
+}
