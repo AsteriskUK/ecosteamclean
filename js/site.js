@@ -288,10 +288,10 @@ function saveLead(lead) {
     localStorage.setItem(LEADS_KEY, JSON.stringify(leads));
   } catch (e) { /* storage unavailable */ }
 }
-// Enquiries are emailed here via FormSubmit (free, no backend required).
-// One-time activation: the FIRST submission triggers a confirmation email
-// to this address — click the link in it once and all future leads arrive.
-const FORM_ENDPOINT = "https://formsubmit.co/ajax/ecosteamclean1@gmail.com";
+// Enquiries go to Netlify Forms (form name "quote", registered at deploy from
+// contact.html). View them in Netlify → Forms; set email alerts under
+// Forms → Form notifications. Posting to "/" is what Netlify expects for AJAX.
+const FORM_ENDPOINT = "/";
 
 function initForms() {
   document.querySelectorAll("form[data-quote]").forEach(form => {
@@ -332,41 +332,34 @@ function initForms() {
       // keep a local copy so the admin panel still shows submissions
       saveLead(lead);
 
-      const showOk = () => {
-        // .form-ok sits alongside the form (not inside it), so look in the
-        // parent container, then fall back to the document.
-        const ok = (form.parentElement && form.parentElement.querySelector(".form-ok")) || document.querySelector(".form-ok");
-        if (ok) { ok.classList.add("show"); ok.scrollIntoView({ behavior: "smooth", block: "center" }); }
-        form.reset();
+      // Shown only when the submission genuinely failed, so the visitor
+      // knows to call/email instead of assuming it went through.
+      const showError = () => {
+        let err = form.parentElement && form.parentElement.querySelector(".form-err");
+        if (!err) {
+          err = document.createElement("div");
+          err.className = "form-ok show form-err";
+          err.setAttribute("role", "alert");
+          err.style.cssText = "background:rgba(180,40,40,.08);border-color:rgba(180,40,40,.3);color:#8a1f1f";
+          err.innerHTML = `Sorry — your request couldn't be sent. Please call <a href="tel:${CONFIG.phoneRaw}">${CONFIG.phoneDisplay}</a> or email <a href="mailto:${CONFIG.email}">${CONFIG.email}</a>.`;
+          form.parentNode.insertBefore(err, form);
+        }
+        err.scrollIntoView({ behavior: "smooth", block: "center" });
       };
 
-      // Email the enquiry straight to the team via FormSubmit (no server
-      // needed), then send the visitor to the thank-you page (which also
-      // fires the Google Ads conversion). If the POST isn't accepted
-      // (e.g. offline / local preview) we just show the inline confirmation —
-      // a copy is always kept in the admin panel. We never open an email app.
-      const payload = {
-        name: lead.name,
-        phone: lead.phone,
-        email: lead.email,
-        postcode: lead.postcode,
-        service: lead.service,
-        message: lead.message,
-        _subject: data.subject || "New quote request — ecologicscleaning.co.uk",
-        _replyto: lead.email,
-        _template: "table",
-        _captcha: "false",
-      };
+      // Send to Netlify Forms (same origin, urlencoded, includes form-name),
+      // then go to the thank-you page (which fires the Google Ads conversion).
+      // Only a genuine 2xx counts as success.
       fetch(FORM_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify(payload),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(fd).toString(),
       })
         .then(res => {
           if (res.ok) { try { sessionStorage.setItem("esc_lead", "1"); } catch (e) {} window.location.href = "/thank-you.html"; }
-          else { showOk(); }
+          else { showError(); }
         })
-        .catch(() => { showOk(); });
+        .catch(() => { showError(); });
     });
   });
 }
